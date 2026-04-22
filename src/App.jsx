@@ -51,16 +51,47 @@ function computeLayout(vw,vh){
   const scale=Math.min(vw/origW,vh/origH);
   const w=Math.floor(origW*scale),h=Math.floor(origH*scale);
   const f=norm.map(fr=>({x:Math.floor(fr.x*scale),y:Math.floor(fr.y*scale),s:Math.floor(fr.s*scale)}));
-  // F4 expanded rect: covers F2 through F10 (everything right of F1 in landscape, below F1 in portrait)
-  // Landscape: x=0, y=f[1].y (=0), w=f[1].s (=340 scaled), h=full canvas height
-  // Portrait:  x=0, y=f[1].y, w=full canvas width, h=canvas - f1.s
-  const f4exp = isLandscape
-    ? {x:0, y:0, w:f[1].s, h:h}
-    : {x:0, y:f[1].y, w:w, h:h-f[0].s};
-  return {w,h,isLandscape,f,f4exp};
+  // Expanded rectangle: covers everything except F1
+  const sideRect=isLandscape
+    ?{x:0,y:0,w:f[1].s,h:h}
+    :{x:0,y:f[0].s,w:w,h:h-f[0].s};
+  // F1 rectangle: covers F1 area
+  const f1Rect={x:f[0].x,y:f[0].y,w:f[0].s,h:f[0].s};
+  return{w,h,isLandscape,f,sideRect,f1Rect};
 }
 
-const SD={
+// Teasers for F4 small state
+const F4_TEASERS={
+  sparky:{
+    s:{title:"SITUATION",teaser:"Customers needed a trusted voice for high-consideration products"},
+    o:{title:"OBSTACLE",teaser:"The chatbot wasn't confident, captivating, or concise"},
+    a:{title:"ACTIONS",teaser:"How I improved the voice:"},
+    r:{title:"RESULTS",teaser:"Doubled conversation quality scores, ramped to 100M users"},
+  },
+  auth:{
+    s:{title:"SITUATION",teaser:"Customers had to authenticate before they could say why they called"},
+    o:{title:"OBSTACLE",teaser:"Auth had to stay secure while I made it feel less like a wall"},
+    a:{title:"ACTIONS",teaser:"How I used persuasion science to raise acceptance rates:"},
+    r:{title:"RESULTS",teaser:"Higher acceptance, lower frustration, across multiple global markets"},
+  },
+  celeste:{
+    s:{title:"SITUATION",teaser:"A roast-style job search tracker I couldn't build — until Claude Code"},
+    o:{title:"OBSTACLE",teaser:"The design challenge: make tracking genuinely drive behavior change"},
+    a:{title:"ACTIONS",teaser:"How I designed CELESTE's personality and feedback system:"},
+    r:{title:"LEARNINGS",teaser:"A facial expression turned out to be the most powerful design decision"},
+  },
+};
+
+// F4 expanded rect also used for F5/F6 expanded on mobile
+// f5exp covers F1 area (right/top side), f6exp covers F1 area too
+// Actually for F5/F6 we use the same f4exp rectangle approach
+function computeExpandRect(layout){
+  // Rectangle covering everything except F1
+  const{w,h,isLandscape,f}=layout;
+  return isLandscape
+    ?{x:0,y:0,w:f[1].s,h:h}       // landscape: left column (F2 through F10)
+    :{x:0,y:f[0].s,w:w,h:h-f[0].s}; // portrait: bottom section
+}
   sparky:{
     s:{h:"Situation",t:"Savvy customers have questions about the 500 million products sold by Walmart which they need answered before they can commit to a purchase. Scrolling through pages of product details and hundreds of reviews to find one specific detail is a frustrating waste of time. But that doesn't mean savvy customers want long drawn-out answers.",f1:IMG_SPARKY_UI,f1s:"Sparky in production",f1l:"With agentic search being a new behavior for many users, I found ways to utilize the user's context to make more relevant suggestion chips of things they could ask. We had to balance information from several knowledge banks (product, reviews, world knowledge) to deliver confident results.",f3:IMG_DISCOVERY,f3s:"Figma prototypes",f3l:"These Figma prototypes traced the development of a summary card explaining why the products were surfaced relevant to the user's individual need. From this we drew out assumptions to test and achieved buy-in from stakeholders."},
     o:{h:"Obstacle",t:"The chatbot was responding in ways that were too verbose, wishy-washy, and not in the right brand voice, leading to early chat abandonment.",f1:IMG_PROBLEM_STMT,f1s:"Problem Statement & Opportunity",f1l:"We conducted 12 interviews with \"Savvy Sam\" customers and found that they didn't trust AI recommendations. Without customized justification, they assumed upselling. This directly impacted retention and confidence in Sparky.",f3:IMG_JOURNEY_MAP,f3s:"Journey map",f3l:"I created journey maps to better understand the high-consideration purchase journey and reveal how agentic search created new friction points in the evaluation phase that existing frameworks didn't address."},
@@ -186,19 +217,26 @@ function RenderF3({id,bg,size,sp}){
       <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(13,size*0.093),fontWeight:800,color:t,textAlign:"center",lineHeight:1.1,whiteSpace:"pre-line"}}>{"CONVERSATION\nDESIGN PORTFOLIO\nAPRIL 2026"}</span>
     </div>
   );
-  if(id==="about")return(
-    <div style={{display:"flex",flexDirection:"column",justifyContent:"center",height:"100%",padding:p,color:t}}>
-      <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(14,size*0.073),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
-      <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75,marginTop:6}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>
-    </div>
-  );
+  if(id==="about"){
+    // Small: just headline + tap CTA. Large: full text.
+    const fs=r=>Math.max(8,Math.round(size*r));
+    const ex=size>200;
+    return(
+      <div style={{display:"flex",flexDirection:"column",justifyContent:ex?"center":"center",height:"100%",padding:ex?p:Math.max(6,size*0.04),color:t,overflow:"hidden",gap:ex?8:4}}>
+        <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:ex?Math.max(14,size*0.073):fs(0.075),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>}
+        {!ex&&<span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.06),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.05em"}}>tap to expand</span>}
+      </div>
+    );
+  }
   if(SD[id]){const dd=SD[id][sp||"s"];if(dd.f3)return <Img src={dd.f3}/>;}
   return null;
 }
 
-// F4: small state = teaser + tap CTA; expanded = full content in rectangle covering F2-F10
-function RenderF4({id,bg,size,sp,isExpanded,f4exp,layout}){
+// F4 renderer
+function RenderF4({id,bg,size,sp,isExpanded,sideRect}){
   const t=tx(bg),d=dk(bg),fs=r=>Math.max(6,Math.round(size*r));
+  // INTRO: small=HOW TO USE / CLICK HERE; expanded=full image
   if(id==="intro"){
     if(!isExpanded)return(
       <div style={{padding:4,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"100%",color:t,textAlign:"center",gap:3}}>
@@ -206,30 +244,38 @@ function RenderF4({id,bg,size,sp,isExpanded,f4exp,layout}){
         <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.55,textTransform:"uppercase",letterSpacing:"0.05em"}}>CLICK HERE</span>
       </div>
     );
+    // Expanded: show full image in f1 pos (handled by f4_to_f1 moving it to f[0])
     return <div style={{width:"100%",height:"100%",overflow:"hidden"}}><Img src={IMG_HOW_TO_USE}/></div>;
   }
   if(!SD[id])return null;
   const dd=SD[id][sp||"s"];
+  const phase=sp||"s";
+  const teaserData=F4_TEASERS[id]?.[phase];
   if(!isExpanded){
-    // Teaser: show headline + "tap to expand"
+    // Small state: big title + teaser + CTA
     return(
-      <div style={{padding:Math.max(4,size*0.04),display:"flex",flexDirection:"column",justifyContent:"center",height:"100%",color:t,overflow:"hidden",gap:2}}>
-        <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.09),fontWeight:800,lineHeight:1.05}}>{dd.h}</h4>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.062),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.05em",marginTop:2}}>tap to expand</span>
+      <div style={{padding:Math.max(4,size*0.035),display:"flex",flexDirection:"column",justifyContent:"space-between",height:"100%",color:t,overflow:"hidden"}}>
+        <div>
+          <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.1),fontWeight:900,lineHeight:1.0,letterSpacing:"-0.01em"}}>{teaserData?.title||dd.h.toUpperCase()}</h4>
+          {teaserData?.teaser&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.071),fontWeight:500,lineHeight:1.25,opacity:0.75,marginTop:Math.max(3,size*0.02)}}>{teaserData.teaser}</p>}
+        </div>
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.35,textTransform:"uppercase",letterSpacing:"0.05em"}}>tap for more</span>
       </div>
     );
   }
-  // Expanded: full rectangle F2-F10, rendered at actual expanded dimensions
-  const ew=f4exp.w,eh=f4exp.h;
-  const ep=Math.max(16,ew*0.05),egap=8;
-  const bodyFs=Math.max(13,ew*0.038),hFs=Math.max(16,ew*0.05),itemFs=Math.max(12,ew*0.035);
+  // Expanded: full rectangle, rich content
+  const ew=sideRect.w,eh=sideRect.h;
+  const ep=Math.max(16,Math.min(ew,eh)*0.05);
+  const bodyFs=Math.max(13,Math.min(ew,eh)*0.042);
+  const hFs=Math.max(16,Math.min(ew,eh)*0.055);
+  const itemFs=Math.max(12,Math.min(ew,eh)*0.038);
   return(
-    <div style={{padding:ep,display:"flex",flexDirection:"column",width:"100%",height:"100%",color:t,overflow:"hidden",gap:egap}}>
+    <div style={{padding:ep,display:"flex",flexDirection:"column",width:"100%",height:"100%",color:t,overflow:"hidden",gap:Math.max(6,eh*0.02)}}>
       <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:800,lineHeight:1.05,flexShrink:0}}>{dd.h}</h4>
       {dd.t&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500}}>{dd.t}</p>}
       {dd.items&&dd.items.map((it,i)=><p key={i} style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:itemFs,lineHeight:1.3,opacity:0.85,fontWeight:500}}><span style={{opacity:0.4,fontWeight:800}}>{i+1}.</span> {it}</p>)}
       <div style={{marginTop:"auto",flexShrink:0}}>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,ew*0.028),opacity:0.35,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span>
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span>
       </div>
     </div>
   );
@@ -247,38 +293,48 @@ function ArrowLabel({dir,label,color,size,isExpanded}){
   );
 }
 
-function RenderF5({id,bg,size,sp,arrowDir,isExpanded,expandedText}){
+function RenderF5({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
   const t=tx(bg);
   const label=id==="about"?"Kung Fu Panda\nPaws of Destiny\nvoice game":(SD[id]?SD[id][sp||"s"].f1s:"");
   const body=id==="about"
     ?"The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards."
     :(SD[id]?SD[id][sp||"s"].f1l:"");
-  const ex=isExpanded,p=ex?24:3,fs=r=>Math.max(5,Math.round(size*r));
+  const ex=isExpanded;
+  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
+  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):3;
   const aw=ex?90:Math.min(52,size*0.65),ah=ex?22:Math.min(16,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
+  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(5,size*0.12);
+  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{label}</span>
-      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{label}</span>
+      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
+      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
 }
 
-function RenderF6({id,bg,size,sp,arrowDir,isExpanded}){
+function RenderF6({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
   const t=tx(bg);
   const label=id==="about"?"Nike Adapt BB drop":(SD[id]?SD[id][sp||"s"].f3s:"");
   const body=id==="about"
     ?"The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award."
     :(SD[id]?SD[id][sp||"s"].f3l:"");
-  const ex=isExpanded,p=ex?24:2,fs=r=>Math.max(4,Math.round(size*r));
+  const ex=isExpanded;
+  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
+  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):2;
   const aw=ex?90:Math.min(38,size*0.65),ah=ex?22:Math.min(11,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
+  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(4,size*0.14);
+  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(4,size*0.14),lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</span>
-      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</span>
+      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
+      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
 }
@@ -299,6 +355,156 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
 const TR="left 0.38s cubic-bezier(0.4,0,0.2,1),top 0.38s cubic-bezier(0.4,0,0.2,1),width 0.38s cubic-bezier(0.4,0,0.2,1),height 0.38s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease";
 
 function GoldenSlide({id,layout,colors,sp,onSp,mode}){
+  const f=layout.f,sideRect=layout.sideRect,f1Rect=layout.f1Rect;
+  const cs=!!SD[id];
+  const[expKey,setExpKey]=useState(null);
+  function close(){setExpKey(null);}
+
+  function getRect(fi){
+    const b=f[fi];
+    if(!expKey)return b;
+    switch(expKey){
+      case "f4_rect": return fi===3?{x:sideRect.x,y:sideRect.y,s:f[3].s}:b;
+      case "f4_to_f1": if(fi===3)return f[0]; return b;
+      case "f4_to_f2": if(fi===3)return f[1]; return b;
+      case "f5_to_f2": if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
+      case "f3f6": if(fi===2)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
+      case "f2f6": if(fi===1)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
+      case "f2f5": if(fi===1)return f[0]; if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
+      case "f3f1swap": if(fi===2)return f[0]; if(fi===0)return f[2]; return b;
+      case "f2f1_swap": if(fi===1)return f[0]; if(fi===0)return f[1]; return b;
+      default: return b;
+    }
+  }
+
+  function getDims(fi){
+    if(expKey==="f4_rect"&&fi===3)return{width:sideRect.w,height:sideRect.h};
+    if(expKey==="f5_to_f2"&&fi===4)return{width:sideRect.w,height:sideRect.h};
+    if((expKey==="f3f6"||expKey==="f2f6")&&fi===5)return{width:sideRect.w,height:sideRect.h};
+    if(expKey==="f2f5"&&fi===4)return{width:sideRect.w,height:sideRect.h};
+    const r=getRect(fi);return{width:r.s,height:r.s};
+  }
+
+  function visible(fi){
+    if(!expKey)return true;
+    switch(expKey){
+      case "f4_rect": return fi===0||fi===3;
+      case "f4_to_f1": return fi===3;
+      case "f4_to_f2": return fi===0||fi===3;
+      case "f5_to_f2": return fi===0||fi===4;
+      case "f3f6": return fi===2||fi===5;
+      case "f2f6": return fi===1||fi===5;
+      case "f2f5": return fi===1||fi===4;
+      case "f3f1swap": return fi===0||fi===1||fi===2; // F2 stays visible!
+      case "f2f1_swap": return fi===0||fi===1;
+      default: return false;
+    }
+  }
+
+  function zFor(fi){
+    if(!expKey)return 10-fi;
+    if(!visible(fi))return 1;
+    switch(expKey){
+      case "f4_rect": return fi===3?15:12;
+      case "f4_to_f1": return fi===3?15:10-fi;
+      case "f4_to_f2": return fi===3?15:fi===0?12:10-fi;
+      case "f5_to_f2": return fi===4?15:fi===0?12:10-fi;
+      case "f3f6": return fi===2?15:fi===5?14:10-fi;
+      case "f2f6": return fi===1?15:fi===5?14:10-fi;
+      case "f2f5": return fi===1?15:fi===4?14:10-fi;
+      case "f3f1swap": return fi===2?15:fi===0?14:fi===1?12:10-fi;
+      case "f2f1_swap": return 15;
+      default: return 10-fi;
+    }
+  }
+
+  function showClose(fi){
+    if(!expKey)return false;
+    switch(expKey){
+      case "f4_rect": return fi===3;
+      case "f4_to_f1": return fi===3;
+      case "f4_to_f2": return fi===3;
+      case "f5_to_f2": return fi===4;
+      case "f3f6": return fi===2;
+      case "f2f6": return fi===1;
+      case "f2f5": return fi===1;
+      case "f3f1swap": return fi===2;
+      case "f2f1_swap": return fi===1;
+      default: return false;
+    }
+  }
+
+  function handleClick(fi,e){
+    e.stopPropagation();
+    if(expKey){close();return;}
+    if(id==="intro"){if(fi===3)setExpKey("f4_to_f1");return;}
+    if(id==="about"){
+      if(fi===0)setExpKey("f4_to_f2");
+      if(fi===1)setExpKey("f2f6");
+      if(fi===2)setExpKey("f3f1swap");
+      if(fi===3)setExpKey("f4_to_f2");
+      if(fi===4)setExpKey("f2f5");
+      if(fi===5)setExpKey("f2f6");
+      return;
+    }
+    if(cs){
+      if(fi===0)setExpKey("f5_to_f2");
+      if(fi===1)setExpKey("f2f1_swap");
+      if(fi===2)setExpKey("f3f6");
+      if(fi===3)setExpKey("f4_rect");
+      if(fi===4)setExpKey("f5_to_f2");
+      if(fi===5)setExpKey("f3f6");
+    }
+  }
+
+  // Arrow directions
+  const f5Arrow=id==="about"?(mode==="landscape"?"up":"left"):(mode==="landscape"?"right":"up");
+  const f6Exp=expKey==="f3f6"||expKey==="f2f6";
+  const f5Exp=expKey==="f5_to_f2"||expKey==="f2f5";
+  // When F5 is at sideRect, it's pointing toward F1 which is now at f[0] pos — same direction as normal
+  const f5FinalArrow=id==="about"&&f5Exp?(mode==="landscape"?"right":"up"):f5Arrow;
+  const f6Arrow=id==="about"?(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"up":"down"))
+    :(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
+  const f4AboutArrow=mode==="landscape"?"right":"up";
+  const f4IsExp=expKey==="f4_to_f2"||expKey==="f4_to_f1";
+
+  return(
+    <div style={{width:layout.w,height:layout.h,position:"relative",overflow:"hidden",background:C.black}} onClick={expKey?close:undefined}>
+      {f.slice(6).map((fr,i)=>(
+        <div key={i+6} style={{position:"absolute",left:fr.x,top:fr.y,width:fr.s,height:fr.s,background:colors[i+6],opacity:expKey?0.08:1,transition:"opacity 0.25s",zIndex:1}}/>
+      ))}
+      {[5,4,3,2,1,0].map(fi=>{
+        const rect=getRect(fi);
+        const dims=getDims(fi);
+        const isVis=visible(fi);
+        const isExp=!!expKey&&isVis&&fi!==0;
+        const f4expanded=expKey==="f4_rect"&&fi===3;
+        const f5expanded=(expKey==="f5_to_f2"||expKey==="f2f5")&&fi===4;
+        const f6expanded=(expKey==="f3f6"||expKey==="f2f6")&&fi===5;
+        const f2expanded=expKey==="f2f1_swap"&&fi===1;
+
+        let content=null;
+        if(fi===0) content=<RenderF1 id={id} bg={colors[0]} size={f[0].s} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
+        else if(fi===1) content=<RenderF2 id={id} bg={colors[1]} size={dims.width} navPad={f2expanded}/>;
+        else if(fi===2) content=<RenderF3 id={id} bg={colors[2]} size={dims.width} sp={sp}/>;
+        else if(fi===3){
+          if(id==="about") content=<RenderF4_About bg={colors[3]} size={dims.width} arrowDir={f4AboutArrow} isExpanded={f4IsExp}/>;
+          else content=<RenderF4 id={id} bg={colors[3]} size={f[3].s} sp={sp} isExpanded={f4expanded} sideRect={sideRect}/>;
+        }
+        else if(fi===4) content=<RenderF5 id={id} bg={colors[4]} size={f[4].s} sp={sp} arrowDir={f5FinalArrow} isExpanded={f5expanded} sideRect={sideRect}/>;
+        else if(fi===5) content=<RenderF6 id={id} bg={colors[5]} size={f[5].s} sp={sp} arrowDir={f6Arrow} isExpanded={f6expanded} sideRect={sideRect}/>;
+
+        return(
+          <div key={fi} style={{position:"absolute",left:rect.x,top:rect.y,width:dims.width,height:dims.height,background:colors[fi],overflow:"hidden",transition:TR,opacity:!expKey||isVis?1:0.08,zIndex:zFor(fi),cursor:"pointer",borderRadius:isExp&&fi!==0?5:0,boxShadow:isExp&&fi!==0?"0 10px 50px rgba(0,0,0,0.55)":"none"}}
+            onClick={e=>handleClick(fi,e)}>
+            {content}
+            {showClose(fi)&&<div style={{position:"absolute",top:8,right:12,cursor:"pointer",zIndex:20}} onClick={e=>{e.stopPropagation();close();}}><span style={{fontSize:16,opacity:0.5,color:tx(colors[fi]),fontWeight:800}}>{"\u2715"}</span></div>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
   const f=layout.f,f4exp=layout.f4exp;
   const cs=!!SD[id];
   const[expKey,setExpKey]=useState(null);
