@@ -271,16 +271,21 @@ function RenderF4({id,bg,size,sp,isSmall,isExpanded,sideRect}){
 
 // F5: small=arrow+label, large=arrow+label+expanded text
 // arrowDir: context-sensitive
-function RenderF5({id,bg,size,sp,arrowDir}){
-  const t=tx(bg),ex=size>200,p=ex?24:3,fs=r=>Math.max(5,Math.round(size*r));
+function RenderF5({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
+  const t=tx(bg);
+  const ex=isExpanded;
+  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
+  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):3;
   const aw=ex?90:Math.min(52,size*0.65),ah=ex?22:Math.min(16,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
+  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(5,size*0.12);
+  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
   if(id==="about"){
     return(
       <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
         <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{"Kung Fu Panda\nPaws of Destiny\nvoice game"}</span>
-        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards.</p>}
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{"Kung Fu Panda\nPaws of Destiny\nvoice game"}</span>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards.</p>}
       </div>
     );
   }
@@ -289,35 +294,41 @@ function RenderF5({id,bg,size,sp,arrowDir}){
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f1s}</span>
-      {ex&&dd.f1l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f1l}</p>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f1s}</span>
+      {ex&&dd.f1l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f1l}</p>}
+      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
 }
 
-function RenderF6({id,bg,size,sp,arrowDir}){
-  const t=tx(bg),ex=size>200,p=ex?24:2,fs=r=>Math.max(4,Math.round(size*r));
+function RenderF6({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
+  const t=tx(bg);
+  const ex=isExpanded;
+  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
+  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):2;
   const aw=ex?90:Math.min(38,size*0.65),ah=ex?22:Math.min(11,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
+  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(4,size*0.14);
+  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
   if(id==="about"){
     return(
       <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
         <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(4,size*0.14),lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>Nike Adapt BB drop</span>
-        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award.</p>}
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>Nike Adapt BB drop</span>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award.</p>}
       </div>
     );
   }
-  if(id==="about_f4"){// Comedy Central F4 — handled separately
-    return null;
-  }
   if(!SD[id])return null;
   const dd=SD[id][sp||"s"];
+  // Show full "Gamification" when expanded, split version when small
+  const f3sLabel=ex?dd.f3s.replace("Gamifi-\ncation","Gamification"):dd.f3s;
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(4,size*0.14),lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f3s}</span>
-      {ex&&dd.f3l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f3l}</p>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{f3sLabel}</span>
+      {ex&&dd.f3l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f3l}</p>}
+      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
 }
@@ -351,50 +362,40 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
   const[expKey,setExpKey]=useState(null);
   function close(){setExpKey(null);}
 
-  // Given expand key, return {x,y,s} for each frame index 0-5
   function getRect(fi){
     const b=f[fi];
-    if(!expKey) return b;
+    if(!expKey)return b;
     switch(expKey){
-      case "f4_to_f1": // intro: f4→f1 pos
-        if(fi===3) return f[0];
-        return b;
-      case "f4_to_f2": // f4→f2 pos, f1 stays
-        if(fi===3) return f[1];
-        return b;
-      case "f5_to_f2": // f5→f2 pos, f1 stays
-        if(fi===4) return f[1];
-        return b;
-      case "f3f6": // f3→f1, f6→f2
-        if(fi===2) return f[0];
-        if(fi===5) return f[1];
-        return b;
-      case "f2f6": // f2→f1, f6→f2
-        if(fi===1) return f[0];
-        if(fi===5) return f[1];
-        return b;
-      case "f2f5": // f2→f1, f5→f2
-        if(fi===1) return f[0];
-        if(fi===4) return f[1];
-        return b;
-      case "f3_only": // f3→f1
-        if(fi===2) return f[0];
-        return b;
-      case "f3f1swap": // f3↔f1 swap, f2 stays visible
-        if(fi===2) return f[0];
-        if(fi===0) return f[2];
-        return b;
-      case "f2f1_swap": // f2↔f1, only for case study F2 click
-        if(fi===1) return f[0];
-        if(fi===0) return f[1];
-        return b;
+      case "f4_to_f1": if(fi===3)return f[0]; return b;
+      case "f4_to_f2": if(fi===3)return{x:sideRect.x,y:sideRect.y,s:f[3].s}; return b;
+      case "f5_to_f2": if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
+      case "f3f6": if(fi===2)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
+      case "f2f6": if(fi===1)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
+      case "f2f5": if(fi===1)return f[0]; if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
+      case "f3f1swap": if(fi===2)return f[0]; if(fi===0)return f[2]; return b;
+      case "f2f1_swap": if(fi===1)return f[0]; if(fi===0)return f[1]; return b;
+      case "f4_rect": if(fi===3)return{x:sideRect.x,y:sideRect.y,s:f[3].s}; return b;
       default: return b;
     }
   }
 
-  // Which frames are visible (not dimmed)
+  // Returns actual rendered {width,height} — rectangular for expanded frames
+  function getDims(fi){
+    if(!expKey)return{w:f[fi].s,h:f[fi].s};
+    switch(expKey){
+      case "f4_to_f2": if(fi===3)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f5_to_f2": if(fi===4)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f3f6":  if(fi===5)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f2f6":  if(fi===5)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f2f5":  if(fi===4)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f4_rect": if(fi===3)return{w:sideRect.w,h:sideRect.h}; break;
+      case "f4_to_f1": if(fi===3)return{w:f[0].s,h:f[0].s}; break;
+    }
+    const r=getRect(fi);return{w:r.s,h:r.s};
+  }
+
   function visible(fi){
-    if(!expKey) return true;
+    if(!expKey)return true;
     switch(expKey){
       case "f4_to_f1": return fi===3;
       case "f4_to_f2": return fi===0||fi===3;
@@ -402,17 +403,16 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f3f6": return fi===2||fi===5;
       case "f2f6": return fi===1||fi===5;
       case "f2f5": return fi===1||fi===4;
-      case "f3_only": return fi===2;
       case "f3f1swap": return fi===0||fi===1||fi===2;
-      case "f2f1_swap": return fi===0||fi===1;
+      case "f2f1_swap": return fi===0||fi===1||fi===2; // F3 stays visible
+      case "f4_rect": return fi===0||fi===3;
       default: return false;
     }
   }
 
   function zFor(fi){
-    if(!expKey) return 10-fi;
-    if(!visible(fi)) return 1;
-    // Elevated frames
+    if(!expKey)return 10-fi;
+    if(!visible(fi))return 1;
     switch(expKey){
       case "f4_to_f1": return fi===3?15:10-fi;
       case "f4_to_f2": return fi===3?15:fi===0?12:10-fi;
@@ -420,16 +420,15 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f3f6": return fi===2?15:fi===5?14:10-fi;
       case "f2f6": return fi===1?15:fi===5?14:10-fi;
       case "f2f5": return fi===1?15:fi===4?14:10-fi;
-      case "f3_only": return fi===2?15:10-fi;
       case "f3f1swap": return fi===2?15:fi===0?14:fi===1?12:10-fi;
-      case "f2f1_swap": return 15;
+      case "f2f1_swap": return fi===1?15:fi===0?14:fi===2?3:10-fi;
+      case "f4_rect": return fi===3?15:fi===0?12:10-fi;
       default: return 10-fi;
     }
   }
 
-  // Which frame shows the ✕ close button
   function showClose(fi){
-    if(!expKey) return false;
+    if(!expKey)return false;
     switch(expKey){
       case "f4_to_f1": return fi===3;
       case "f4_to_f2": return fi===3;
@@ -437,93 +436,74 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f3f6": return fi===2;
       case "f2f6": return fi===1;
       case "f2f5": return fi===1;
-      case "f3_only": return fi===2;
       case "f3f1swap": return fi===2;
       case "f2f1_swap": return fi===1;
+      case "f4_rect": return fi===3;
       default: return false;
     }
   }
 
-  // Click handlers
   function handleClick(fi,e){
     e.stopPropagation();
     if(expKey){close();return;}
-    if(id==="intro"){
-      if(fi===3) setExpKey("f4_to_f1");
-      return;
-    }
+    if(id==="intro"){if(fi===3)setExpKey("f4_to_f1");return;}
     if(id==="about"){
-      if(fi===0) setExpKey("f4_to_f2"); // F1 click → F4→F2
-      if(fi===1) setExpKey("f2f6");      // F2 click → F2→F1, F6→F2
-      if(fi===2) setExpKey("f3f1swap");  // F3 click → F3↔F1 swap, F2 stays
-      if(fi===3) setExpKey("f4_to_f2"); // F4 click → F4→F2
-      if(fi===4) setExpKey("f2f5");      // F5 click → F2→F1, F5→F2
-      if(fi===5) setExpKey("f2f6");      // F6 click → F2→F1, F6→F2
+      if(fi===0)setExpKey("f4_to_f2");
+      if(fi===1)setExpKey("f2f6");
+      if(fi===2)setExpKey("f3f1swap");
+      if(fi===3)setExpKey("f4_to_f2");
+      if(fi===4)setExpKey("f2f5");
+      if(fi===5)setExpKey("f2f6");
       return;
     }
     if(cs){
-      if(fi===0) setExpKey("f5_to_f2");  // F1 body tap → F5→F2, F1 stays
-      if(fi===1) setExpKey("f2f1_swap"); // F2 tap → F2↔F1 swap
-      if(fi===2) setExpKey("f3f6");      // F3 tap → F3→F1, F6→F2
-      if(fi===3) setExpKey("f4_to_f2"); // F4 tap → F4→F2, F1 stays
-      if(fi===4) setExpKey("f5_to_f2");  // F5 tap → F5→F2, F1 stays
-      if(fi===5) setExpKey("f3f6");      // F6 tap → same as F3
+      if(fi===0)setExpKey("f5_to_f2");
+      if(fi===1)setExpKey("f2f1_swap");
+      if(fi===2)setExpKey("f3f6");
+      if(fi===3)setExpKey("f4_rect");
+      if(fi===4)setExpKey("f5_to_f2");
+      if(fi===5)setExpKey("f3f6");
     }
   }
 
-  // Arrow direction for F4_about, F5, F6 given state
-  // F5 always points toward F1. In normal state landscape=right, portrait=up.
-  // After f5_to_f2 (F5 is now at F2 pos, F1 still at F1 pos): landscape=right, portrait=up (unchanged, F1 is still to right/above)
-  // F6 normal: landscape=left, portrait=down. After f3f6/f2f6 (F6 at F2 pos, F3 at F1 pos): landscape=right, portrait=up
-  // F4_about: always points toward F1 — landscape=right, portrait=up
-  // About F5: points toward F2 (up in landscape, left in portrait)
-  // About F6: points toward F2 (up in landscape, down-left in portrait — use "down" as closest)
-  // Case study F5: points toward F1 (right in landscape, up in portrait)
-  // Case study F6: normal=left/down, expanded=right/up
-  const f5ArrowDir = id==="about"
-    ? (mode==="landscape"?"up":"left")
-    : (mode==="landscape"?"right":"up");
-  const f6Expanded = expKey==="f3f6"||expKey==="f2f6";
-  const f6ArrowDir = id==="about"
-    ? (mode==="landscape"?"up":"down")   // portrait: diagonal lower-left approximated as down
-    : (f6Expanded?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
-  const f4AboutArrowDir = mode==="landscape"?"right":"up";
-
-  const r = fi => getRect(fi);
-  const vis = fi => visible(fi);
+  const f5Arrow=id==="about"?(mode==="landscape"?"up":"left"):(mode==="landscape"?"right":"up");
+  const f6Exp=expKey==="f3f6"||expKey==="f2f6";
+  const f5Exp=expKey==="f5_to_f2"||expKey==="f2f5";
+  const f5Arrow2=id==="about"&&f5Exp?(mode==="landscape"?"right":"up"):f5Arrow;
+  const f6Arrow=id==="about"
+    ?(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"up":"down"))
+    :(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
+  const f4AboutArrow=mode==="landscape"?"right":"up";
+  const f4AboutExp=expKey==="f4_to_f2"&&id==="about";
+  const f4CsExp=(expKey==="f4_rect"||expKey==="f4_to_f1")&&id!=="about";
 
   return(
     <div style={{width:layout.w,height:layout.h,position:"relative",overflow:"hidden",background:C.black}}
       onClick={expKey?close:undefined}>
-      {/* F7-F10 decorative */}
       {f.slice(6).map((fr,i)=>(
         <div key={i+6} style={{position:"absolute",left:fr.x,top:fr.y,width:fr.s,height:fr.s,background:colors[i+6],opacity:expKey?0.08:1,transition:"opacity 0.25s",zIndex:1}}/>
       ))}
-      {/* F0-F5 rendered back to front */}
       {[5,4,3,2,1,0].map(fi=>{
-        const rect=r(fi);
-        const isVis=vis(fi);
-        const isExp=expKey&&isVis&&fi!==0; // expanded = moved from original pos (not the "anchor" f1)
-        const expanded=!!expKey&&isVis;
-        const sz=rect.s;
-
-        const f4AboutExp=(expKey==="f4_to_f2")&&fi===3&&id==="about";
-        const f4expanded=(expKey==="f4_rect"||expKey==="f4_to_f1"||expKey==="f4_to_f2")&&fi===3&&id!=="about";
+        const rect=getRect(fi);
+        const dims=getDims(fi);
+        const isVis=visible(fi);
+        const isExp=!!expKey&&isVis&&fi!==0;
+        const f2expanded=expKey==="f2f1_swap"&&fi===1;
 
         let content=null;
-        if(fi===0) content=<RenderF1 id={id} bg={colors[0]} size={sz} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
-        else if(fi===1) content=<RenderF2 id={id} bg={colors[1]} size={sz}/>;
-        else if(fi===2) content=<RenderF3 id={id} bg={colors[2]} size={sz} sp={sp}/>;
+        if(fi===0)content=<RenderF1 id={id} bg={colors[0]} size={f[0].s} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
+        else if(fi===1)content=<RenderF2 id={id} bg={colors[1]} size={dims.w} navPad={f2expanded}/>;
+        else if(fi===2)content=<RenderF3 id={id} bg={colors[2]} size={dims.w} sp={sp}/>;
         else if(fi===3){
-          if(id==="about") content=<RenderF4_About bg={colors[3]} size={sz} arrowDir={f4AboutArrowDir} isExpanded={f4AboutExp}/>;
-          else content=<RenderF4 id={id} bg={colors[3]} size={sz} sp={sp} isSmall={sz<=130} isExpanded={f4expanded} sideRect={sideRect}/>;
+          if(id==="about")content=<RenderF4_About bg={colors[3]} size={dims.w} arrowDir={f4AboutArrow} isExpanded={f4AboutExp}/>;
+          else content=<RenderF4 id={id} bg={colors[3]} size={f[3].s} sp={sp} isSmall={f[3].s<=130} isExpanded={f4CsExp} sideRect={sideRect}/>;
         }
-        else if(fi===4) content=<RenderF5 id={id} bg={colors[4]} size={sz} sp={sp} arrowDir={f5ArrowDir}/>;
-        else if(fi===5) content=<RenderF6 id={id} bg={colors[5]} size={sz} sp={sp} arrowDir={f6ArrowDir}/>;
+        else if(fi===4)content=<RenderF5 id={id} bg={colors[4]} size={f[4].s} sp={sp} arrowDir={f5Arrow2} isExpanded={f5Exp} sideRect={sideRect}/>;
+        else if(fi===5)content=<RenderF6 id={id} bg={colors[5]} size={f[5].s} sp={sp} arrowDir={f6Arrow} isExpanded={f6Exp} sideRect={sideRect}/>;
 
         return(
           <div key={fi}
-            style={{position:"absolute",left:rect.x,top:rect.y,width:rect.s,height:rect.s,background:colors[fi],overflow:"hidden",transition:TR,opacity:!expKey||isVis?1:0.08,zIndex:zFor(fi),cursor:"pointer",borderRadius:isExp?5:0,boxShadow:isExp?"0 10px 50px rgba(0,0,0,0.55)":"none"}}
+            style={{position:"absolute",left:rect.x,top:rect.y,width:dims.w,height:dims.h,background:colors[fi],overflow:"hidden",transition:TR,opacity:!expKey||isVis?1:0.08,zIndex:zFor(fi),cursor:"pointer",borderRadius:isExp?5:0,boxShadow:isExp?"0 10px 50px rgba(0,0,0,0.55)":"none"}}
             onClick={e=>handleClick(fi,e)}>
             {content}
             {showClose(fi)&&(
