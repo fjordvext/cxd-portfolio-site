@@ -373,6 +373,9 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f2f5": if(fi===1)return f[0]; if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
       case "f3f1swap": if(fi===2)return f[0]; if(fi===0)return f[2]; return b;
       case "f2f1_swap": if(fi===1)return f[0]; if(fi===0)return f[1]; return b;
+      case "f4_rect": // f4→sideRect, f1 stays
+  if(fi===3) return {x:sideRect.x,y:sideRect.y,s:f[3].s};
+  return b;
       default: return b;
     }
   }
@@ -397,6 +400,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f2f5": return fi===1||fi===4;
       case "f3f1swap": return fi===0||fi===1||fi===2; // F2 stays visible!
       case "f2f1_swap": return fi===0||fi===1;
+      case "f4_rect": return fi===0||fi===3;
       default: return false;
     }
   }
@@ -414,6 +418,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f2f5": return fi===1?15:fi===4?14:10-fi;
       case "f3f1swap": return fi===2?15:fi===0?14:fi===1?12:10-fi;
       case "f2f1_swap": return 15;
+      case "f4_rect": return fi===3?15:fi===0?12:10-fi;
       default: return 10-fi;
     }
   }
@@ -430,6 +435,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f2f5": return fi===1;
       case "f3f1swap": return fi===2;
       case "f2f1_swap": return fi===1;
+      case "f4_rect": return fi===3;
       default: return false;
     }
   }
@@ -442,7 +448,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       if(fi===0)setExpKey("f4_to_f2");
       if(fi===1)setExpKey("f2f6");
       if(fi===2)setExpKey("f3f1swap");
-      if(fi===3)setExpKey("f4_to_f2");
+      if(fi===3)setExpKey("f4_rect");
       if(fi===4)setExpKey("f2f5");
       if(fi===5)setExpKey("f2f6");
       return;
@@ -479,6 +485,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
         const isVis=visible(fi);
         const isExp=!!expKey&&isVis&&fi!==0;
         const f4expanded=(expKey==="f4_rect"||expKey==="f4_to_f1")&&fi===3;
+        const f4dims=f4expanded&&expKey==="f4_rect"?{width:sideRect.w,height:sideRect.h}:{width:f[3].s,height:f[3].s};
         const f5expanded=(expKey==="f5_to_f2"||expKey==="f2f5")&&fi===4;
         const f6expanded=(expKey==="f3f6"||expKey==="f2f6")&&fi===5;
         const f2expanded=expKey==="f2f1_swap"&&fi===1;
