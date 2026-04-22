@@ -30,6 +30,7 @@ const IMG_CEL_NUDGE="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAAAAAAD/4gHYSUND
 const IMG_HOW_TO_USE="data:image/jpeg;base64,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m5Sxzcpc4ga7gBSNoKkVDpHTNLDJm5PM4AbfhqV8kPcVzS4LJrg5oc0gtIuCNhWVoUFFNSykyTZ25A0AE2FgOb8Pet9ZyST2dyyba3CIiqSYLmhwaXAF2wX2oXBtg5wFzYXPOtKropaiqjnZMIzELMGW+3xj1KAYZMCxzZWseGBpe1zidRJuL9N1qoQa3kUcnwWtiiqm4bUAAmosQLAB7rAa7i/4rfpInw0sccjg57RYkc6rKMUtncmLb6omREVC4Xlskb5HRte1z27WggkesL0qufC5XzTSRzhpkJIGsWBLdVx021/grwUX1dism10LTX6V5a5rxdhDh0jWq44fVgvyVI8Lnc5xPikE3968twuZhJjlYHFzXE3dzF2q3PtV8kPcVzS4LVERYmhhZREAREQBERAEREICIiAIiISEREAREQBERAEREICIiEhERAEREAREQBERAEREAREQBERAEREAWFlEAREQGFlEQBERCAiIhIREQBERAEREAREQGFlEQBERAEREAREQBERAEREICIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiID/2Q==";
 
 const C={purple:"#702391",black:"#000000",blue:"#1f7ac3",yellow:"#fdbb39",white:"#ffffff"};
+
 const SCH={
   intro: [C.purple,C.black,C.blue,C.yellow,C.white,C.purple,C.black,C.blue,C.yellow,C.white],
   about: [C.white,C.purple,C.black,C.blue,C.yellow,C.white,C.purple,C.black,C.blue,C.yellow],
@@ -39,28 +40,39 @@ const SCH={
   contact:[C.white,C.yellow,C.blue,C.black,C.purple,C.white,C.yellow,C.blue,C.black,C.purple],
 };
 
-// Layout: always portrait on mobile (vw<vh), landscape otherwise
-// Canvas fills screen exactly — no margins
-const LY_NORM=[{x:340,y:0,s:550},{x:0,y:0,s:340},{x:0,y:340,s:210},{x:210,y:420,s:130},{x:260,y:340,s:80},{x:210,y:340,s:50},{x:210,y:390,s:30},{x:240,y:400,s:20},{x:250,y:390,s:10},{x:240,y:390,s:10}];
-const PT_NORM=[{x:0,y:0,s:550},{x:0,y:550,s:340},{x:340,y:680,s:210},{x:420,y:550,s:130},{x:340,y:550,s:80},{x:340,y:630,s:50},{x:390,y:650,s:30},{x:400,y:630,s:20},{x:390,y:630,s:10},{x:390,y:640,s:10}];
+// Dynamic layout: F1 is always the largest square that fits the screen.
+// All frame positions/sizes scale proportionally from the original 550px F1.
+const ORIG_F1 = 550;
+const LY_FRAMES_NORM = [{x:340,y:0,s:550},{x:0,y:0,s:340},{x:0,y:340,s:210},{x:210,y:420,s:130},{x:260,y:340,s:80},{x:210,y:340,s:50},{x:210,y:390,s:30},{x:240,y:400,s:20},{x:250,y:390,s:10},{x:240,y:390,s:10}];
+const PT_FRAMES_NORM = [{x:0,y:0,s:550},{x:0,y:550,s:340},{x:340,y:680,s:210},{x:420,y:550,s:130},{x:340,y:550,s:80},{x:340,y:630,s:50},{x:390,y:650,s:30},{x:400,y:630,s:20},{x:390,y:630,s:10},{x:390,y:640,s:10}];
 
-function computeLayout(vw,vh){
-  const isLandscape=vw>=vh;
-  const origW=isLandscape?890:550,origH=isLandscape?550:890;
-  const norm=isLandscape?LY_NORM:PT_NORM;
-  const scale=Math.min(vw/origW,vh/origH);
-  const w=Math.floor(origW*scale),h=Math.floor(origH*scale);
-  const f=norm.map(fr=>({x:Math.floor(fr.x*scale),y:Math.floor(fr.y*scale),s:Math.floor(fr.s*scale)}));
-  // Expanded rectangle: covers everything except F1
-  const sideRect=isLandscape
-    ?{x:0,y:0,w:f[1].s,h:h}
-    :{x:0,y:f[0].s,w:w,h:h-f[0].s};
-  // F1 rectangle: covers F1 area
-  const f1Rect={x:f[0].x,y:f[0].y,w:f[0].s,h:f[0].s};
-  return{w,h,isLandscape,f,sideRect,f1Rect};
+function computeLayout(vw, vh) {
+  const isLandscape = vw >= vh;
+  // Original canvas dims
+  const origW = isLandscape ? 890 : 550;
+  const origH = isLandscape ? 550 : 890;
+  const frames_norm = isLandscape ? LY_FRAMES_NORM : PT_FRAMES_NORM;
+
+  // Scale factor: fit canvas into screen with small margin
+  const margin = 0;
+  const scale = Math.min((vw - margin) / origW, (vh - margin) / origH);
+
+  const w = Math.floor(origW * scale);
+  const h = Math.floor(origH * scale);
+
+  const f = frames_norm.map(fr => ({
+    x: Math.floor(fr.x * scale),
+    y: Math.floor(fr.y * scale),
+    s: Math.floor(fr.s * scale),
+  }));
+
+  const sideRect = isLandscape
+    ? {x:0, y:0, w:f[1].s, h:h}
+    : {x:0, y:f[0].s, w:w, h:h-f[0].s};
+
+  return { w, h, isLandscape, f, sideRect };
 }
 
-// Teasers for F4 small state
 const F4_TEASERS={
   sparky:{
     s:{title:"SITUATION",teaser:"Customers needed a trusted voice for high-consideration products"},
@@ -82,16 +94,6 @@ const F4_TEASERS={
   },
 };
 
-// F4 expanded rect also used for F5/F6 expanded on mobile
-// f5exp covers F1 area (right/top side), f6exp covers F1 area too
-// Actually for F5/F6 we use the same f4exp rectangle approach
-function computeExpandRect(layout){
-  // Rectangle covering everything except F1
-  const{w,h,isLandscape,f}=layout;
-  return isLandscape
-    ?{x:0,y:0,w:f[1].s,h:h}       // landscape: left column (F2 through F10)
-    :{x:0,y:f[0].s,w:w,h:h-f[0].s}; // portrait: bottom section
-}
 const SD={
   sparky:{
     s:{h:"Situation",t:"Savvy customers have questions about the 500 million products sold by Walmart which they need answered before they can commit to a purchase. Scrolling through pages of product details and hundreds of reviews to find one specific detail is a frustrating waste of time. But that doesn't mean savvy customers want long drawn-out answers.",f1:IMG_SPARKY_UI,f1s:"Sparky in production",f1l:"With agentic search being a new behavior for many users, I found ways to utilize the user's context to make more relevant suggestion chips of things they could ask. We had to balance information from several knowledge banks (product, reviews, world knowledge) to deliver confident results.",f3:IMG_DISCOVERY,f3s:"Figma prototypes",f3l:"These Figma prototypes traced the development of a summary card explaining why the products were surfaced relevant to the user's individual need. From this we drew out assumptions to test and achieved buy-in from stakeholders."},
@@ -100,16 +102,16 @@ const SD={
     r:{h:"Results",t:"Customers responded to transparent, fact-based summaries. CQS climbed from low 40s to high 80s. Rollout ramped to 100%, over 100M users.",f1:IMG_CAROUSEL_FB,f1s:"User feedback",f1l:"Feedback: real user quotes from moderated testing confirmed customers valued transparent, fact-based product summaries over generic recommendations.",f3:IMG_CQS_SCORES,f3s:"CQS scores",f3l:"Metrics: Conversational Quality Scores tracked across two model revisions, climbing from the low 40s to high 80s as training content improved."},
   },
   auth:{
-    s:{h:"Situation",t:"Amazon asked customers to authenticate before they could say why they called. That meant leaving a voice call, opening a text, clicking a link, signing in, and confirming — all before saying a word. Most didn't. The challenge: I couldn't move authentication later in the flow. I could only make people more willing to do it.",f1:IMG_AUTH_SIT,f1s:"The friction point",f1l:"Authentication required an involuntary modal transition because security details are too sensitive to be communicated audibly. But this ignores the decision the user explicitly made to have the conversation over a voice modality. These are the joints where multimodal experiences often break.",f3:IMG_AUTH_FLOW,f3s:"Auth workflow",f3l:"I made this striated user flow tracking how authentication worked over several Converse workflows and how that was experienced by the user. What the user sees is on top, what the user hears and reads is below that, and what's going on under the hood is below that."},
+    s:{h:"Situation",t:"Amazon asked customers to authenticate before they could say why they called. That meant leaving a voice call, opening a text, clicking a link, signing in, and confirming — all before saying a word. Most didn't. The challenge: I couldn't move authentication later in the flow. I could only make people more willing to do it.",f1:IMG_AUTH_SIT,f1s:"The friction point",f1l:"Authentication required an involuntary modal transition because security details are too sensitive to be communicated audibly. But this ignores the decision the user explicitly made to have the conversation over a voice modality. These are the joints where multimodal experiences often break.",f3:IMG_AUTH_FLOW,f3s:"Authentication workflow",f3l:"I made this striated user flow tracking how authentication worked over several Converse workflows and how that was experienced by the user. What the user sees is on top, what the user hears and reads is below that, and what's going on under the hood is below that."},
     o:{h:"Obstacle",t:"Authentication had to remain secure and trustworthy while still persuading customers to complete a set of disruptive, multi-modal steps.",f1:IMG_AUTH_INTENT,f1s:"Intent architecture",f1l:"After seeing in benchmarking studies that Amazon was the only company authenticating before asking the reason for calling (RFC), I proposed an alternate way of structuring intents to put authentication later, but leadership was unwilling to change the authentication order, so I had to devise an iterative plan to get there.",f3:IMG_AUTH_SANKEY,f3s:"Sankey visualization",f3l:"I made this Sankey visualization to communicate to stakeholders where in the experience we were losing users, leading to a 92% drop-off rate."},
-    a:{h:"Actions",items:["Analyzed authentication traffic to identify where & why users abandon the experience","Conducted competitive analysis to benchmark voice-based authentication patterns across industries","Designed a persuasion framework using multiple behavioral strategies (authority, reciprocity, scarcity, consistency)","Ran multi-market A/B experiments to quantify the impact of persuasion strategies on acceptance, sentiment, & agent volume","Discovered market-specific persuasion patterns: Scarcity in US/UK/India, Social Proof in Germany/Canada"],f1:IMG_AUTH_EXP1,f1s:"Experiment design",f1l:"I ran this test where I tried different persuasion strategies in the prompt to consent to the involuntary modal transition for authentication in several global marketplaces. Each variant tested a different Cialdini principle to find which strategies were most effective when applied to authentication.",f3:IMG_AUTH_CIALDINI,f3s:"Cialdini framework",f3l:"Cialdini's six principles of persuasion: Scarcity, Reciprocity, Authority, Social Proof, Liking, and Consistency. I selected which principles to test based on the specific friction points in the authentication flow."},
-    r:{h:"Results",t:"Optimized authentication messaging. Increased acceptance rates by ~3%. Reduced negative sentiment by ~6%. Lowered unnecessary human-agent escalation, impacting hundreds of thousands of customer interactions annually across multiple markets.",f1:IMG_AUTH_EXP2,f1s:"Phase 2 iteration",f1l:"Phase 2 tested the winning strategies from Phase 1 in new channel configurations. Scarcity and Liking strategies were tested in the Multichannel no-sign-in flow, iterating based on what we learned from the first round.",f3:IMG_AUTH_EXP2ABA,f3s:"Phase 1 anon. auth tests",f3l:"While testing authentication using a wide array of methods, I was also testing anonymized authentication using different persuasion strategy methods tailored to users with that context. That's how we learned about the surprising efficiency of scarcity messaging."},
+    a:{h:"Actions",items:["Analyzed authentication traffic to identify where & why users abandon the experience","Conducted competitive analysis to identify effective voice-based authentication patterns across industries","Designed a persuasion framework using multiple behavioral strategies (authority, reciprocity, scarcity, consistency)","Ran multi-market A/B experiments to quantify the impact of persuasion strategies on acceptance, sentiment, & agent volume","Discovered market-specific persuasion patterns: Scarcity in US/UK/India, Social Proof in Germany/Canada"],f1:IMG_AUTH_EXP1,f1s:"Experiment design",f1l:"I ran this test where I tried different persuasion strategies in the prompt to consent to the involuntary modal transition for authentication in several global marketplaces. Each variant tested a different Cialdini principle to find which strategies were most effective when applied to authentication.",f3:IMG_AUTH_CIALDINI,f3s:"Cialdini framework",f3l:"Cialdini's six principles of persuasion: Scarcity, Reciprocity, Authority, Social Proof, Liking, and Consistency. I selected which principles to test based on the specific friction points in the authentication flow."},
+    r:{h:"Results",t:"Optimized authentication messaging. Increased acceptance rates by ~3%. Reduced negative sentiment by ~6%. Lowered unnecessary human-agent escalation, impacting hundreds of thousands of customer interactions annually across multiple markets.",f1:IMG_AUTH_EXP2,f1s:"Phase 2 iteration",f1l:"Phase 2 tested the winning strategies from Phase 1 in new channel configurations. Scarcity and Liking strategies were tested in the Multichannel no-sign-in flow, iterating based on what we learned from the first round.",f3:IMG_AUTH_EXP2ABA,f3s:"Phase one anonymized authentication tests",f3l:"While testing authentication using a wide array of methods, I was also testing anonymized authentication using different persuasion strategy methods tailored to users with that context. That's how we learned about the surprising efficiency of scarcity messaging."},
   },
   celeste:{
     s:{h:"Situation",t:"Years ago at Comedy Central, I had an idea for a roast-style self-tracking app to help those who didn't respond well to relentless positive feedback. The concept evolved into a gamified job search assistant, but my lack of coding ability stymied development, so it sat on the shelf for several years. But early this year I started working on it again with Claude Code.",f1:IMG_CEL_ORIGIN,f1s:"Origin story",f1l:"At Comedy Central I developed a weight tracking app with an attitude featuring Roastmaster Jeffrey Ross. I returned to the idea years later when learning UX, but my lack of coding skills was too much of a detriment to actually begin production until Claude became available.",f3:IMG_CEL_DATA,f3s:"Raw search data",f3l:"I was able to use data I had been collecting for months in a spreadsheet and feed it to Claude, where we could use it to identify patterns and make relevant and actionable data-based suggestions."},
-    o:{h:"Obstacle",t:"With Claude handling the coding, the main obstacle became one of design: how do we make this tracker genuinely useful for decision-making and behavior change?",f1:IMG_CEL_SCREENS,f1s:"Working Product",f1l:"The home screen of CELESTE features visual feedback, a nudge of things you could be doing, and stats on what you've done that day. Pressing the log button brings up a screen where you select the job search action you did and give it a description for the tracker. Points follow!",f3:IMG_CEL_PITCH,f3s:"Gamification",f3l:"The core mechanic with CELESTE is that you get points for the various activities you have to do and only lose points for not doing anything. Consistent action leads to results."},
+    o:{h:"Obstacle",t:"With Claude handling the coding, the main obstacle became one of design: how do we make this tracker genuinely useful for decision-making and behavior change?",f1:IMG_CEL_SCREENS,f1s:"Working Product",f1l:"The home screen of CELESTE features visual feedback, a nudge of things you could be doing, and stats on what you've done that day. Pressing the log button brings up a screen where you select the job search action you did and give it a description for the tracker. Points follow!",f3:IMG_CEL_PITCH,f3s:"Gamifi-\ncation",f3l:"The core mechanic with CELESTE is that you get points for the various activities you have to do and only lose points for not doing anything. Consistent action leads to results."},
     a:{h:"Actions",items:["Used months of tracked job search data, identifying patterns: what works, what doesn't","Worked with Claude to understand: what insights would actually change behavior?","Designed conversation for different user states (first-time, experienced, plateauing)","Deployed personality as feedback mechanism","Created graphic expressions through focused meta-prompting","Performed QA and bug fixing through daily usage"],f1:IMG_CEL_FACES,f1s:"Persona design",f1l:"I designed different facial expressions of emotional states for CELESTE that respond to user behavior, giving users a powerful subconscious push towards developing consistency in job search rigor.",f3:IMG_CEL_REVIEW,f3s:"Month in review",f3l:"After using CELESTE for a few weeks, I developed CELESTE's Month in Review, using the Claude API to analyze tracking data and deliver personalized, Tiger Mom-style feedback. Blunt, specific, data-based and actionable."},
-    r:{h:"Learnings",t:"What I've learned by using CELESTE for a few weeks is how powerful a simple facial expression can be in driving behavior: I don't like getting CELESTE mad at me and will do a lot to avoid it. What I need to validate is if other users feel the same.",f1:IMG_CEL_CONTACTS,f1s:"Contact & role tracker",f1l:"When you mention a contact or a role to CELESTE, she automatically logs the contact and keeps track of when you should be reaching out to keep the contact fresh or checking in on an application.",f3:IMG_CEL_NUDGE,f3s:"CELESTE nudges",f3l:"CELESTE always has a nudge where she suggests actions you could be doing based on data you've been entering. Something I'm tweaking now is how to make these nudges feel fresh and data-based every time."},
+    r:{h:"Learnings",t:"What I've learned by using CELESTE for a few weeks is how powerful a simple facial expression can be in driving behavior: I don't like getting CELESTE mad at me and will do a lot to avoid it. What I need to validate is if other users feel the same.",f1:IMG_CEL_CONTACTS,f1s:"CELESTE contact tracker and role tracker",f1l:"When you mention a contact or a role to CELESTE, she automatically logs the contact and keeps track of when you should be reaching out to keep the contact fresh or checking in on an application.",f3:IMG_CEL_NUDGE,f3s:"CELESTE nudges",f3l:"CELESTE always has a nudge where she suggests actions you could be doing based on data you've been entering. Something I'm tweaking now is how to make these nudges feel fresh and data-based every time."},
   },
 };
 
@@ -139,13 +141,13 @@ function SoarTabs({id,sp,onSp,bg,size}){
   );
 }
 
-/* ── Renderers ──────────────────────────────────────────────────── */
+/* ── Frame renderers ─────────────────────────────────────────────── */
 
 function RenderF1({id,bg,size,sp,onSp,onBodyClick}){
   const t=tx(bg),d=dk(bg),p=Math.max(12,size*0.038),fs=r=>Math.max(9,Math.round(size*r));
   if(id==="intro")return(
     <div style={{height:"100%",display:"flex",flexDirection:"column"}}>
-      <div style={{flex:1,overflow:"hidden"}}><Img src={IMG_AUTH_WOMAN} style={{objectFit:"cover",objectPosition:"left center"}}/></div>
+      <div style={{flex:1,overflow:"hidden"}}><Img src={IMG_AUTH_WOMAN}/></div>
       <div style={{padding:p,flexShrink:0,background:bg}}>
         <h1 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.049),fontWeight:800,lineHeight:1.15,color:t,marginBottom:Math.max(5,size*0.016)}}>I design intuitive conversational systems that build trust between users and major brands.</h1>
         <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.027),fontWeight:600,lineHeight:1.5,color:t,opacity:0.75}}>From GenAI assistants serving 100 million users to award-winning voice experiences, I build the frameworks, flows, and voices that make AI feel human and trustworthy.</p>
@@ -171,17 +173,15 @@ function RenderF1({id,bg,size,sp,onSp,onBodyClick}){
   return(
     <div style={{display:"flex",flexDirection:"column",height:"100%",cursor:"pointer"}} onClick={onBodyClick}>
       <div style={{flex:1,overflow:"hidden"}}>
-        {dd.f1?<Img src={dd.f1} style={{objectFit:"cover",objectPosition:id==="celeste"&&(sp||"s")==="a"?"bottom":"top center"}}/>:<Ph label="[Image TBD]" isDk={d} style={{width:"100%",height:"100%"}}/>}
+        {dd.f1?<Img src={dd.f1} style={{objectFit:"cover",objectPosition:id==="celeste"&&(sp||"s")==="a"?"bottom":"center"}}/>:<Ph label="[Image TBD]" isDk={d} style={{width:"100%",height:"100%"}}/>}
       </div>
       <SoarTabs id={id} sp={sp} onSp={onSp} bg={bg} size={size}/>
     </div>
   );
 }
 
-function RenderF2({id,bg,size,navPad}){
+function RenderF2({id,bg,size,titleName}){
   const t=C.white,p=Math.max(10,size*0.044),fs=r=>Math.max(10,Math.round(size*r));
-  // navPad: extra horizontal padding to clear nav arrows when expanded
-  const px=navPad?Math.max(p,52):p;
   if(id==="intro")return(
     <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-end",height:"100%",padding:p,color:t}}>
       <div style={{flex:1,overflow:"hidden",marginBottom:10,borderRadius:2}}><Img src={IMG_HEADSHOT}/></div>
@@ -198,8 +198,8 @@ function RenderF2({id,bg,size,navPad}){
   };
   const dd=m[id];if(!dd)return null;
   return(
-    <div style={{display:"flex",flexDirection:"column",height:"100%",paddingLeft:px,paddingRight:px,paddingTop:p,paddingBottom:p,color:t}}>
-      {dd.title&&<div style={{flex:1,display:"flex",alignItems:"center"}}>
+    <div style={{display:"flex",flexDirection:"column",height:"100%",padding:p,color:t}}>
+      {dd.title&&<div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"flex-start"}}>
         <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(28,size*0.13),fontWeight:900,lineHeight:1,letterSpacing:"-0.02em",opacity:0.95}}>{dd.title}</span>
       </div>}
       <div style={{flexShrink:0}}>
@@ -218,34 +218,25 @@ function RenderF3({id,bg,size,sp}){
       <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(13,size*0.093),fontWeight:800,color:t,textAlign:"center",lineHeight:1.1,whiteSpace:"pre-line"}}>{"CONVERSATION\nDESIGN PORTFOLIO\nAPRIL 2026"}</span>
     </div>
   );
-  if(id==="about"){
-    // Small: just headline + tap CTA. Large: full text.
-    const fs=r=>Math.max(8,Math.round(size*r));
-    const ex=size>200;
-    return(
-      <div style={{display:"flex",flexDirection:"column",justifyContent:ex?"center":"center",height:"100%",padding:ex?p:Math.max(6,size*0.04),color:t,overflow:"hidden",gap:ex?8:4}}>
-        <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:ex?Math.max(14,size*0.073):fs(0.075),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
-        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>}
-        {!ex&&<span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.06),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.05em"}}>tap to expand</span>}
-      </div>
-    );
-  }
+  if(id==="about")return(
+    <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-end",height:"100%",padding:p,color:t}}>
+      <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(14,size*0.073),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
+      <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75,marginTop:6}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>
+    </div>
+  );
   if(SD[id]){const dd=SD[id][sp||"s"];if(dd.f3)return <Img src={dd.f3}/>;}
   return null;
 }
 
-// F4 renderer
-function RenderF4({id,bg,size,sp,isExpanded,sideRect}){
-  const t=tx(bg),d=dk(bg),fs=r=>Math.max(6,Math.round(size*r));
-  // INTRO: small=HOW TO USE / CLICK HERE; expanded=full image
+function RenderF4({id,bg,size,sp,isSmall,isExpanded,sideRect}){
+  const t=tx(bg),p=Math.max(5,size*0.04),fs=r=>Math.max(6,Math.round(size*r));
   if(id==="intro"){
-    if(!isExpanded)return(
+    if(isSmall)return(
       <div style={{padding:4,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"100%",color:t,textAlign:"center",gap:3}}>
         <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.075),fontWeight:800,lineHeight:1.1,textTransform:"uppercase"}}>HOW TO USE</span>
         <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.55,textTransform:"uppercase",letterSpacing:"0.05em"}}>CLICK HERE</span>
       </div>
     );
-    // Expanded: show full image in f1 pos (handled by f4_to_f1 moving it to f[0])
     return <div style={{width:"100%",height:"100%",overflow:"hidden"}}><Img src={IMG_HOW_TO_USE}/></div>;
   }
   if(!SD[id])return null;
@@ -253,89 +244,80 @@ function RenderF4({id,bg,size,sp,isExpanded,sideRect}){
   const phase=sp||"s";
   const teaserData=F4_TEASERS[id]?.[phase];
   if(!isExpanded){
-    // Small state: big title + teaser + CTA
+    // Small state: big title + teaser line + tap CTA
     return(
       <div style={{padding:Math.max(4,size*0.035),display:"flex",flexDirection:"column",justifyContent:"space-between",height:"100%",color:t,overflow:"hidden"}}>
         <div>
-          <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.1),fontWeight:900,lineHeight:1.0,letterSpacing:"-0.01em"}}>{teaserData?.title||dd.h.toUpperCase()}</h4>
-          {teaserData?.teaser&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.071),fontWeight:500,lineHeight:1.25,opacity:0.75,marginTop:Math.max(3,size*0.02)}}>{teaserData.teaser}</p>}
+          <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.13),fontWeight:900,lineHeight:1.0,letterSpacing:"-0.01em"}}>{teaserData?.title||dd.h.toUpperCase()}</h4>
+          {teaserData?.teaser&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.072),fontWeight:500,lineHeight:1.25,opacity:0.75,marginTop:Math.max(3,size*0.02)}}>{teaserData.teaser}</p>}
         </div>
         <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.35,textTransform:"uppercase",letterSpacing:"0.05em"}}>tap for more</span>
       </div>
     );
   }
-  // Expanded: full rectangle, rich content
-  const ew=sideRect.w,eh=sideRect.h;
+  // Expanded: full rectangle
+  const ew=sideRect?sideRect.w:size*2,eh=sideRect?sideRect.h:size*2;
   const ep=Math.max(16,Math.min(ew,eh)*0.05);
-  const bodyFs=Math.max(13,Math.min(ew,eh)*0.042);
-  const hFs=Math.max(16,Math.min(ew,eh)*0.055);
-  const itemFs=Math.max(12,Math.min(ew,eh)*0.038);
+  const hFs=Math.max(16,Math.min(ew,eh)*0.055),bodyFs=Math.max(13,Math.min(ew,eh)*0.042),itemFs=Math.max(12,Math.min(ew,eh)*0.038);
   return(
     <div style={{padding:ep,display:"flex",flexDirection:"column",width:"100%",height:"100%",color:t,overflow:"hidden",gap:Math.max(6,eh*0.02)}}>
       <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:800,lineHeight:1.05,flexShrink:0}}>{dd.h}</h4>
       {dd.t&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500}}>{dd.t}</p>}
       {dd.items&&dd.items.map((it,i)=><p key={i} style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:itemFs,lineHeight:1.3,opacity:0.85,fontWeight:500}}><span style={{opacity:0.4,fontWeight:800}}>{i+1}.</span> {it}</p>)}
-      <div style={{marginTop:"auto",flexShrink:0}}>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span>
-      </div>
+      <div style={{marginTop:"auto",flexShrink:0}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>
     </div>
   );
 }
 
-function ArrowLabel({dir,label,color,size,isExpanded}){
-  const ex=isExpanded,p=ex?24:3,fs=r=>Math.max(5,Math.round(size*r));
-  const aw=ex?90:Math.min(52,size*0.65),ah=ex?22:Math.min(16,size*0.22);
-  const isH=dir==="right"||dir==="left";
-  return(
-    <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color,overflow:"hidden",gap:ex?12:3}}>
-      <Arrow dir={dir} color={color} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</span>
-    </div>
-  );
-}
-
-function RenderF5({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
-  const t=tx(bg);
-  const label=id==="about"?"Kung Fu Panda\nPaws of Destiny\nvoice game":(SD[id]?SD[id][sp||"s"].f1s:"");
-  const body=id==="about"
-    ?"The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards."
-    :(SD[id]?SD[id][sp||"s"].f1l:"");
-  const ex=isExpanded;
-  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
-  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):3;
+// F5: small=arrow+label, large=arrow+label+expanded text
+// arrowDir: context-sensitive
+function RenderF5({id,bg,size,sp,arrowDir}){
+  const t=tx(bg),ex=size>200,p=ex?24:3,fs=r=>Math.max(5,Math.round(size*r));
   const aw=ex?90:Math.min(52,size*0.65),ah=ex?22:Math.min(16,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
-  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(5,size*0.12);
-  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
+  if(id==="about"){
+    return(
+      <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
+        <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{"Kung Fu Panda\nPaws of Destiny\nvoice game"}</span>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards.</p>}
+      </div>
+    );
+  }
+  if(!SD[id])return null;
+  const dd=SD[id][sp||"s"];
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{label}</span>
-      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
-      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f1s}</span>
+      {ex&&dd.f1l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f1l}</p>}
     </div>
   );
 }
 
-function RenderF6({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
-  const t=tx(bg);
-  const label=id==="about"?"Nike Adapt BB drop":(SD[id]?SD[id][sp||"s"].f3s:"");
-  const body=id==="about"
-    ?"The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award."
-    :(SD[id]?SD[id][sp||"s"].f3l:"");
-  const ex=isExpanded;
-  const ew=ex&&sideRect?sideRect.w:size,eh=ex&&sideRect?sideRect.h:size;
-  const p=ex?Math.max(16,Math.min(ew,eh)*0.05):2;
+function RenderF6({id,bg,size,sp,arrowDir}){
+  const t=tx(bg),ex=size>200,p=ex?24:2,fs=r=>Math.max(4,Math.round(size*r));
   const aw=ex?90:Math.min(38,size*0.65),ah=ex?22:Math.min(11,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
-  const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(4,size*0.14);
-  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
+  if(id==="about"){
+    return(
+      <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
+        <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
+        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(4,size*0.14),lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>Nike Adapt BB drop</span>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award.</p>}
+      </div>
+    );
+  }
+  if(id==="about_f4"){// Comedy Central F4 — handled separately
+    return null;
+  }
+  if(!SD[id])return null;
+  const dd=SD[id][sp||"s"];
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</span>
-      {ex&&body&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{body}</p>}
-      {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(4,size*0.14),lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f3s}</span>
+      {ex&&dd.f3l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f3l}</p>}
     </div>
   );
 }
@@ -353,160 +335,202 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
   );
 }
 
+/* ── Transition ──────────────────────────────────────────────────── */
 const TR="left 0.38s cubic-bezier(0.4,0,0.2,1),top 0.38s cubic-bezier(0.4,0,0.2,1),width 0.38s cubic-bezier(0.4,0,0.2,1),height 0.38s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease";
 
+/* ── Expand state machine ────────────────────────────────────────── */
+// State: null | string key
+// Keys: "f4_to_f1"(intro), "f4_to_f2"(keep f1), "f5_to_f2"(keep f1),
+//       "f3f1swap"(f3↔f1 swap, f2 stays),
+//       "f3f6"(f3→f1 + f6→f2), "f2f6"(f2→f1 + f6→f2), "f2f5"(f2→f1 + f5→f2)
+//       "f3_only"(f3→f1), "f2_f1swap"(f2↔f1 swap for case study pages)
+
 function GoldenSlide({id,layout,colors,sp,onSp,mode}){
-  const f=layout.f,sideRect=layout.sideRect,f1Rect=layout.f1Rect;
+  const f=layout.f,sideRect=layout.sideRect;
   const cs=!!SD[id];
   const[expKey,setExpKey]=useState(null);
   function close(){setExpKey(null);}
 
+  // Given expand key, return {x,y,s} for each frame index 0-5
   function getRect(fi){
     const b=f[fi];
-    if(!expKey)return b;
+    if(!expKey) return b;
     switch(expKey){
-      case "f4_rect": return fi===3?{x:sideRect.x,y:sideRect.y,s:f[3].s}:b;
-      case "f4_to_f1": if(fi===3)return f[0]; return b;
-      case "f4_to_f2": if(fi===3)return f[1]; return b;
-      case "f5_to_f2": if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
-      case "f3f6": if(fi===2)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
-      case "f2f6": if(fi===1)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
-      case "f2f5": if(fi===1)return f[0]; if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
-      case "f3f1swap": if(fi===2)return f[0]; if(fi===0)return f[2]; return b;
-      case "f2f1_swap": if(fi===1)return f[0]; if(fi===0)return f[1]; return b;
-      case "f4_rect": // f4→sideRect, f1 stays
-  if(fi===3) return {x:sideRect.x,y:sideRect.y,s:f[3].s};
-  return b;
+      case "f4_to_f1": // intro: f4→f1 pos
+        if(fi===3) return f[0];
+        return b;
+      case "f4_to_f2": // f4→f2 pos, f1 stays
+        if(fi===3) return f[1];
+        return b;
+      case "f5_to_f2": // f5→f2 pos, f1 stays
+        if(fi===4) return f[1];
+        return b;
+      case "f3f6": // f3→f1, f6→f2
+        if(fi===2) return f[0];
+        if(fi===5) return f[1];
+        return b;
+      case "f2f6": // f2→f1, f6→f2
+        if(fi===1) return f[0];
+        if(fi===5) return f[1];
+        return b;
+      case "f2f5": // f2→f1, f5→f2
+        if(fi===1) return f[0];
+        if(fi===4) return f[1];
+        return b;
+      case "f3_only": // f3→f1
+        if(fi===2) return f[0];
+        return b;
+      case "f3f1swap": // f3↔f1 swap, f2 stays visible
+        if(fi===2) return f[0];
+        if(fi===0) return f[2];
+        return b;
+      case "f2f1_swap": // f2↔f1, only for case study F2 click
+        if(fi===1) return f[0];
+        if(fi===0) return f[1];
+        return b;
       default: return b;
     }
   }
 
-  function getDims(fi){
-    if(expKey==="f4_rect"&&fi===3)return{width:sideRect.w,height:sideRect.h};
-    if(expKey==="f5_to_f2"&&fi===4)return{width:sideRect.w,height:sideRect.h};
-    if((expKey==="f3f6"||expKey==="f2f6")&&fi===5)return{width:sideRect.w,height:sideRect.h};
-    if(expKey==="f2f5"&&fi===4)return{width:sideRect.w,height:sideRect.h};
-    const r=getRect(fi);return{width:r.s,height:r.s};
-  }
-
+  // Which frames are visible (not dimmed)
   function visible(fi){
-    if(!expKey)return true;
+    if(!expKey) return true;
     switch(expKey){
-      case "f4_rect": return fi===0||fi===3;
       case "f4_to_f1": return fi===3;
       case "f4_to_f2": return fi===0||fi===3;
       case "f5_to_f2": return fi===0||fi===4;
       case "f3f6": return fi===2||fi===5;
       case "f2f6": return fi===1||fi===5;
       case "f2f5": return fi===1||fi===4;
-      case "f3f1swap": return fi===0||fi===1||fi===2; // F2 stays visible!
+      case "f3_only": return fi===2;
+      case "f3f1swap": return fi===0||fi===1||fi===2;
       case "f2f1_swap": return fi===0||fi===1;
-      case "f4_rect": return fi===0||fi===3;
       default: return false;
     }
   }
 
   function zFor(fi){
-    if(!expKey)return 10-fi;
-    if(!visible(fi))return 1;
+    if(!expKey) return 10-fi;
+    if(!visible(fi)) return 1;
+    // Elevated frames
     switch(expKey){
-      case "f4_rect": return fi===3?15:12;
       case "f4_to_f1": return fi===3?15:10-fi;
       case "f4_to_f2": return fi===3?15:fi===0?12:10-fi;
       case "f5_to_f2": return fi===4?15:fi===0?12:10-fi;
       case "f3f6": return fi===2?15:fi===5?14:10-fi;
       case "f2f6": return fi===1?15:fi===5?14:10-fi;
       case "f2f5": return fi===1?15:fi===4?14:10-fi;
+      case "f3_only": return fi===2?15:10-fi;
       case "f3f1swap": return fi===2?15:fi===0?14:fi===1?12:10-fi;
       case "f2f1_swap": return 15;
-      case "f4_rect": return fi===3?15:fi===0?12:10-fi;
       default: return 10-fi;
     }
   }
 
+  // Which frame shows the ✕ close button
   function showClose(fi){
-    if(!expKey)return false;
+    if(!expKey) return false;
     switch(expKey){
-      case "f4_rect": return fi===3;
       case "f4_to_f1": return fi===3;
       case "f4_to_f2": return fi===3;
       case "f5_to_f2": return fi===4;
       case "f3f6": return fi===2;
       case "f2f6": return fi===1;
       case "f2f5": return fi===1;
+      case "f3_only": return fi===2;
       case "f3f1swap": return fi===2;
       case "f2f1_swap": return fi===1;
-      case "f4_rect": return fi===3;
       default: return false;
     }
   }
 
+  // Click handlers
   function handleClick(fi,e){
     e.stopPropagation();
     if(expKey){close();return;}
-    if(id==="intro"){if(fi===3)setExpKey("f4_to_f1");return;}
+    if(id==="intro"){
+      if(fi===3) setExpKey("f4_to_f1");
+      return;
+    }
     if(id==="about"){
-      if(fi===0)setExpKey("f4_to_f2");
-      if(fi===1)setExpKey("f2f6");
-      if(fi===2)setExpKey("f3f1swap");
-      if(fi===3)setExpKey("f4_rect");
-      if(fi===4)setExpKey("f2f5");
-      if(fi===5)setExpKey("f2f6");
+      if(fi===0) setExpKey("f4_to_f2"); // F1 click → F4→F2
+      if(fi===1) setExpKey("f2f6");      // F2 click → F2→F1, F6→F2
+      if(fi===2) setExpKey("f3f1swap");  // F3 click → F3↔F1 swap, F2 stays
+      if(fi===3) setExpKey("f4_to_f2"); // F4 click → F4→F2
+      if(fi===4) setExpKey("f2f5");      // F5 click → F2→F1, F5→F2
+      if(fi===5) setExpKey("f2f6");      // F6 click → F2→F1, F6→F2
       return;
     }
     if(cs){
-      if(fi===0)setExpKey("f5_to_f2");
-      if(fi===1)setExpKey("f2f1_swap");
-      if(fi===2)setExpKey("f3f6");
-      if(fi===3)setExpKey("f4_rect");
-      if(fi===4)setExpKey("f5_to_f2");
-      if(fi===5)setExpKey("f3f6");
+      if(fi===0) setExpKey("f5_to_f2");  // F1 body tap → F5→F2, F1 stays
+      if(fi===1) setExpKey("f2f1_swap"); // F2 tap → F2↔F1 swap
+      if(fi===2) setExpKey("f3f6");      // F3 tap → F3→F1, F6→F2
+      if(fi===3) setExpKey("f4_to_f2"); // F4 tap → F4→F2, F1 stays
+      if(fi===4) setExpKey("f5_to_f2");  // F5 tap → F5→F2, F1 stays
+      if(fi===5) setExpKey("f3f6");      // F6 tap → same as F3
     }
   }
 
-  // Arrow directions
-  const f5Arrow=id==="about"?(mode==="landscape"?"up":"left"):(mode==="landscape"?"right":"up");
-  const f6Exp=expKey==="f3f6"||expKey==="f2f6";
-  const f5Exp=expKey==="f5_to_f2"||expKey==="f2f5";
-  // When F5 is at sideRect, it's pointing toward F1 which is now at f[0] pos — same direction as normal
-  const f5FinalArrow=id==="about"&&f5Exp?(mode==="landscape"?"right":"up"):f5Arrow;
-  const f6Arrow=id==="about"?(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"up":"down"))
-    :(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
-  const f4AboutArrow=mode==="landscape"?"right":"up";
-  const f4IsExp=expKey==="f4_to_f2"||expKey==="f4_to_f1";
+  // Arrow direction for F4_about, F5, F6 given state
+  // F5 always points toward F1. In normal state landscape=right, portrait=up.
+  // After f5_to_f2 (F5 is now at F2 pos, F1 still at F1 pos): landscape=right, portrait=up (unchanged, F1 is still to right/above)
+  // F6 normal: landscape=left, portrait=down. After f3f6/f2f6 (F6 at F2 pos, F3 at F1 pos): landscape=right, portrait=up
+  // F4_about: always points toward F1 — landscape=right, portrait=up
+  // About F5: points toward F2 (up in landscape, left in portrait)
+  // About F6: points toward F2 (up in landscape, down-left in portrait — use "down" as closest)
+  // Case study F5: points toward F1 (right in landscape, up in portrait)
+  // Case study F6: normal=left/down, expanded=right/up
+  const f5ArrowDir = id==="about"
+    ? (mode==="landscape"?"up":"left")
+    : (mode==="landscape"?"right":"up");
+  const f6Expanded = expKey==="f3f6"||expKey==="f2f6";
+  const f6ArrowDir = id==="about"
+    ? (mode==="landscape"?"up":"down")   // portrait: diagonal lower-left approximated as down
+    : (f6Expanded?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
+  const f4AboutArrowDir = mode==="landscape"?"right":"up";
+
+  const r = fi => getRect(fi);
+  const vis = fi => visible(fi);
 
   return(
-    <div style={{width:layout.w,height:layout.h,position:"relative",overflow:"hidden",background:C.black}} onClick={expKey?close:undefined}>
+    <div style={{width:layout.w,height:layout.h,position:"relative",overflow:"hidden",background:C.black}}
+      onClick={expKey?close:undefined}>
+      {/* F7-F10 decorative */}
       {f.slice(6).map((fr,i)=>(
         <div key={i+6} style={{position:"absolute",left:fr.x,top:fr.y,width:fr.s,height:fr.s,background:colors[i+6],opacity:expKey?0.08:1,transition:"opacity 0.25s",zIndex:1}}/>
       ))}
+      {/* F0-F5 rendered back to front */}
       {[5,4,3,2,1,0].map(fi=>{
-        const rect=getRect(fi);
-        const dims=getDims(fi);
-        const isVis=visible(fi);
-        const isExp=!!expKey&&isVis&&fi!==0;
-        const f4expanded=(expKey==="f4_rect"||expKey==="f4_to_f1")&&fi===3;
-        const f4dims=f4expanded&&expKey==="f4_rect"?{width:sideRect.w,height:sideRect.h}:{width:f[3].s,height:f[3].s};
-        const f5expanded=(expKey==="f5_to_f2"||expKey==="f2f5")&&fi===4;
-        const f6expanded=(expKey==="f3f6"||expKey==="f2f6")&&fi===5;
-        const f2expanded=expKey==="f2f1_swap"&&fi===1;
+        const rect=r(fi);
+        const isVis=vis(fi);
+        const isExp=expKey&&isVis&&fi!==0; // expanded = moved from original pos (not the "anchor" f1)
+        const expanded=!!expKey&&isVis;
+        const sz=rect.s;
+
+        const f4AboutExp=(expKey==="f4_to_f2")&&fi===3&&id==="about";
+        const f4expanded=(expKey==="f4_rect"||expKey==="f4_to_f1"||expKey==="f4_to_f2")&&fi===3&&id!=="about";
 
         let content=null;
-        if(fi===0) content=<RenderF1 id={id} bg={colors[0]} size={f[0].s} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
-        else if(fi===1) content=<RenderF2 id={id} bg={colors[1]} size={dims.width} navPad={f2expanded}/>;
-        else if(fi===2) content=<RenderF3 id={id} bg={colors[2]} size={dims.width} sp={sp}/>;
+        if(fi===0) content=<RenderF1 id={id} bg={colors[0]} size={sz} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
+        else if(fi===1) content=<RenderF2 id={id} bg={colors[1]} size={sz}/>;
+        else if(fi===2) content=<RenderF3 id={id} bg={colors[2]} size={sz} sp={sp}/>;
         else if(fi===3){
-          if(id==="about") content=<RenderF4_About bg={colors[3]} size={dims.width} arrowDir={f4AboutArrow} isExpanded={f4IsExp}/>;
-          else content=<RenderF4 id={id} bg={colors[3]} size={f[3].s} sp={sp} isExpanded={f4expanded} sideRect={sideRect}/>;
+          if(id==="about") content=<RenderF4_About bg={colors[3]} size={sz} arrowDir={f4AboutArrowDir} isExpanded={f4AboutExp}/>;
+          else content=<RenderF4 id={id} bg={colors[3]} size={sz} sp={sp} isSmall={sz<=130} isExpanded={f4expanded} sideRect={sideRect}/>;
         }
-        else if(fi===4) content=<RenderF5 id={id} bg={colors[4]} size={f[4].s} sp={sp} arrowDir={f5FinalArrow} isExpanded={f5expanded} sideRect={sideRect}/>;
-        else if(fi===5) content=<RenderF6 id={id} bg={colors[5]} size={f[5].s} sp={sp} arrowDir={f6Arrow} isExpanded={f6expanded} sideRect={sideRect}/>;
+        else if(fi===4) content=<RenderF5 id={id} bg={colors[4]} size={sz} sp={sp} arrowDir={f5ArrowDir}/>;
+        else if(fi===5) content=<RenderF6 id={id} bg={colors[5]} size={sz} sp={sp} arrowDir={f6ArrowDir}/>;
 
         return(
-          <div key={fi} style={{position:"absolute",left:rect.x,top:rect.y,width:dims.width,height:dims.height,background:colors[fi],overflow:"hidden",transition:TR,opacity:!expKey||isVis?1:0.08,zIndex:zFor(fi),cursor:"pointer",borderRadius:isExp&&fi!==0?5:0,boxShadow:isExp&&fi!==0?"0 10px 50px rgba(0,0,0,0.55)":"none"}}
+          <div key={fi}
+            style={{position:"absolute",left:rect.x,top:rect.y,width:rect.s,height:rect.s,background:colors[fi],overflow:"hidden",transition:TR,opacity:!expKey||isVis?1:0.08,zIndex:zFor(fi),cursor:"pointer",borderRadius:isExp?5:0,boxShadow:isExp?"0 10px 50px rgba(0,0,0,0.55)":"none"}}
             onClick={e=>handleClick(fi,e)}>
             {content}
-            {showClose(fi)&&<div style={{position:"absolute",top:8,right:12,cursor:"pointer",zIndex:20}} onClick={e=>{e.stopPropagation();close();}}><span style={{fontSize:16,opacity:0.5,color:tx(colors[fi]),fontWeight:800}}>{"\u2715"}</span></div>}
+            {showClose(fi)&&(
+              <div style={{position:"absolute",top:8,right:12,cursor:"pointer",zIndex:20}} onClick={e=>{e.stopPropagation();close();}}>
+                <span style={{fontSize:16,opacity:0.5,color:tx(colors[fi]),fontWeight:800}}>{"\u2715"}</span>
+              </div>
+            )}
           </div>
         );
       })}
@@ -531,11 +555,11 @@ export default function Portfolio(){
   return(
     <div style={{width:"100vw",height:"100vh",display:"flex",alignItems:"center",justifyContent:"center",background:"#111",overflow:"hidden",position:"relative"}}>
       <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
-      <style>{`*{box-sizing:border-box;margin:0;padding:0}html,body{overflow:hidden;width:100%;height:100%;touch-action:manipulation;}::selection{background:${C.purple};color:#fff}button{font-family:inherit;-webkit-tap-highlight-color:transparent;}a{-webkit-tap-highlight-color:transparent;}`}</style>
+      <style>{`*{box-sizing:border-box;margin:0;padding:0}html,body{overflow:hidden;width:100%;height:100%;}::selection{background:${C.purple};color:#fff}button{font-family:inherit}a:hover{opacity:0.7!important}`}</style>
       <div style={{width:layout.w,height:layout.h,position:"relative"}}>
         <GoldenSlide id={id} layout={layout} colors={SCH[id]} sp={soar[id]} onSp={p=>setSoar(v=>({...v,[id]:p}))} mode={mode}/>
-        {idx>0&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i-1);setSoar({});}} style={{position:"absolute",left:6,top:"50%",transform:"translateY(-50%)",zIndex:50,width:38,height:60,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:22,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&lsaquo;</button>}
-        {idx<IDS.length-1&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i+1);setSoar({});}} style={{position:"absolute",right:6,top:"50%",transform:"translateY(-50%)",zIndex:50,width:38,height:60,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:22,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&rsaquo;</button>}
+        {idx>0&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i-1);setSoar({});}} style={{position:"absolute",left:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&lsaquo;</button>}
+        {idx<IDS.length-1&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i+1);setSoar({});}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&rsaquo;</button>}
       </div>
     </div>
   );
