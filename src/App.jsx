@@ -173,7 +173,7 @@ function RenderF1({id,bg,size,sp,onSp,onBodyClick}){
   return(
     <div style={{display:"flex",flexDirection:"column",height:"100%",cursor:"pointer"}} onClick={onBodyClick}>
       <div style={{flex:1,overflow:"hidden"}}>
-        {dd.f1?<Img src={dd.f1} style={{objectFit:"cover",objectPosition:id==="celeste"&&(sp||"s")==="a"?"bottom":"center"}}/>:<Ph label="[Image TBD]" isDk={d} style={{width:"100%",height:"100%"}}/>}
+        {dd.f1?<Img src={dd.f1} style={{objectFit:"cover",objectPosition:id==="celeste"&&(sp||"s")==="a"?"bottom":(id==="auth"&&(sp||"s")==="s")?"top":"center"}}/>:<Ph label="[Image TBD]" isDk={d} style={{width:"100%",height:"100%"}}/>}
       </div>
       <SoarTabs id={id} sp={sp} onSp={onSp} bg={bg} size={size}/>
     </div>
@@ -218,12 +218,16 @@ function RenderF3({id,bg,size,sp}){
       <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(13,size*0.093),fontWeight:800,color:t,textAlign:"center",lineHeight:1.1,whiteSpace:"pre-line"}}>{"CONVERSATION\nDESIGN PORTFOLIO\nAPRIL 2026"}</span>
     </div>
   );
-  if(id==="about")return(
-    <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-end",height:"100%",padding:p,color:t}}>
-      <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(14,size*0.073),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
-      <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75,marginTop:6}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>
-    </div>
-  );
+  if(id==="about"){
+    const ex=size>200;
+    return(
+      <div style={{display:"flex",flexDirection:"column",justifyContent:ex?"center":"flex-end",height:"100%",padding:p,color:t}}>
+        <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(ex?14:8,size*(ex?0.073:0.075)),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
+        {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75,marginTop:6}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>}
+        {!ex&&<span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(7,Math.round(size*0.06)),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.05em",marginTop:4}}>tap to expand</span>}
+      </div>
+    );
+  }
   if(SD[id]){const dd=SD[id][sp||"s"];if(dd.f3)return <Img src={dd.f3}/>;}
   return null;
 }
@@ -231,7 +235,7 @@ function RenderF3({id,bg,size,sp}){
 function RenderF4({id,bg,size,sp,isSmall,isExpanded,sideRect}){
   const t=tx(bg),p=Math.max(5,size*0.04),fs=r=>Math.max(6,Math.round(size*r));
   if(id==="intro"){
-    if(isSmall)return(
+    if(!isExpanded)return(
       <div style={{padding:4,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"100%",color:t,textAlign:"center",gap:3}}>
         <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.075),fontWeight:800,lineHeight:1.1,textTransform:"uppercase"}}>HOW TO USE</span>
         <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.55,textTransform:"uppercase",letterSpacing:"0.05em"}}>CLICK HERE</span>
@@ -257,14 +261,14 @@ function RenderF4({id,bg,size,sp,isSmall,isExpanded,sideRect}){
   }
   // Expanded: full rectangle
   const ew=sideRect?sideRect.w:size*2,eh=sideRect?sideRect.h:size*2;
-  const ep=Math.max(16,Math.min(ew,eh)*0.05);
-  const hFs=Math.max(16,Math.min(ew,eh)*0.055),bodyFs=Math.max(13,Math.min(ew,eh)*0.042),itemFs=Math.max(12,Math.min(ew,eh)*0.038);
+  const ep=Math.max(14,Math.min(ew,eh)*0.045);
+  const hFs=Math.max(15,Math.min(ew,eh)*0.05),bodyFs=Math.max(12,Math.min(ew,eh)*0.038),itemFs=Math.max(11,Math.min(ew,eh)*0.034);
   return(
-    <div style={{padding:ep,display:"flex",flexDirection:"column",width:"100%",height:"100%",color:t,overflow:"hidden",gap:Math.max(6,eh*0.02)}}>
-      <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:800,lineHeight:1.05,flexShrink:0}}>{dd.h}</h4>
-      {dd.t&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500}}>{dd.t}</p>}
-      {dd.items&&dd.items.map((it,i)=><p key={i} style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:itemFs,lineHeight:1.3,opacity:0.85,fontWeight:500}}><span style={{opacity:0.4,fontWeight:800}}>{i+1}.</span> {it}</p>)}
-      <div style={{marginTop:"auto",flexShrink:0}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>
+    <div style={{padding:ep,display:"flex",flexDirection:"column",width:"100%",height:"100%",color:t,overflow:"hidden",gap:Math.max(5,eh*0.015)}}>
+      <h4 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:800,lineHeight:1.0,flexShrink:0}}>{dd.h}</h4>
+      {dd.t&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.3,opacity:0.85,fontWeight:500}}>{dd.t}</p>}
+      {dd.items&&dd.items.map((it,i)=><p key={i} style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:itemFs,lineHeight:1.25,opacity:0.85,fontWeight:500}}><span style={{opacity:0.4,fontWeight:800}}>{i+1}.</span> {it}</p>)}
+      <div style={{marginTop:"auto",flexShrink:0}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(9,Math.min(ew,eh)*0.028),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>
     </div>
   );
 }
@@ -340,7 +344,7 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{"Comedy Central\nBrand Creative"}</span>
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{ex?"Comedy Central":"Comedy Central\nBrand Creative"}</span>
       {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>I learned brand voices as a creative director behind the marketing of shows like South Park and Futurama.</p>}
     </div>
   );
