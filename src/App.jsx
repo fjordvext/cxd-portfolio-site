@@ -253,8 +253,9 @@ function RenderF3({id,bg,size,sp}){
   );
   if(id==="about"){
     const ex=size>200;
+    const navPx3=ex?Math.max(p,52):p;
     return(
-      <div style={{display:"flex",flexDirection:"column",justifyContent:ex?"center":"flex-end",height:"100%",padding:p,color:t}}>
+      <div style={{display:"flex",flexDirection:"column",justifyContent:ex?"center":"flex-end",height:"100%",paddingTop:p,paddingBottom:p,paddingLeft:navPx3,paddingRight:navPx3,color:t}}>
         <h3 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(ex?14:8,size*(ex?0.073:0.075)),fontWeight:800,lineHeight:1.1}}>Getting the brand voice right.</h3>
         {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.045),fontWeight:500,lineHeight:1.45,opacity:0.75,marginTop:6}}>I started as a Creative Director for Comedy Central, that's where I learned to channel brand voices. That instinct for tone became my foundation for creating conversational AI interfaces, leading to Cannes Lion and Clio winning executions for Nike and Dreamworks.</p>}
         {!ex&&<span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(7,Math.round(size*0.06)),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.05em",marginTop:4}}>tap to expand</span>}
@@ -323,10 +324,10 @@ function RenderF5({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
   const aw=Math.min(52,size*0.65),ah=Math.min(16,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
   const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(5,size*0.12);
-  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
+  const bodyFs=ex?Math.max(12,Math.min(ew,eh)*0.036):0;
   if(id==="about"){
     return(
-      <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
+      <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?8:3}}>
         {!ex&&<Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>}
         <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:labelFs,lineHeight:1.3,opacity:0.8,fontWeight:600,letterSpacing:"0.02em",whiteSpace:"pre-line"}}>{"Kung Fu Panda\nPaws of Destiny\nvoice game"}</span>
         {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice game I designed for Amazon/Dreamworks with RAIN was a finalist for best educational game at the 2019 VOICE awards.</p>}
@@ -339,7 +340,7 @@ function RenderF5({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
     <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       {!ex&&<Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>}
       <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em"}}>{dd.f1s}</span>
-      {ex&&dd.f1l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f1l}</p>}
+      {ex&&dd.f1l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f1l}</p>}
       {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
@@ -355,10 +356,10 @@ function RenderF6({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
   const aw=Math.min(38,size*0.65),ah=Math.min(11,size*0.22);
   const isH=arrowDir==="right"||arrowDir==="left";
   const labelFs=ex?Math.max(14,Math.min(ew,eh)*0.045):Math.max(4,size*0.14);
-  const bodyFs=ex?Math.max(13,Math.min(ew,eh)*0.04):0;
+  const bodyFs=ex?Math.max(12,Math.min(ew,eh)*0.036):0;
   if(id==="about"){
     return(
-      <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
+      <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?8:2}}>
         {!ex&&<Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>}
         <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:labelFs,lineHeight:1.2,opacity:0.8,fontWeight:600}}>Nike Adapt BB drop</span>
         {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>The voice sneaker drop I worked on with RAIN won three bronze Cannes Lions and a silver Clio award.</p>}
@@ -372,7 +373,7 @@ function RenderF6({id,bg,size,sp,arrowDir,isExpanded,sideRect}){
     <div style={{paddingTop:p,paddingBottom:p,paddingLeft:px,paddingRight:px,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:2}}>
       {!ex&&<Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>}
       <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:labelFs,lineHeight:1.2,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{f3sLabel}</span>
-      {ex&&dd.f3l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f3l}</p>}
+      {ex&&dd.f3l&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500,marginTop:4}}>{dd.f3l}</p>}
       {ex&&<div style={{marginTop:"auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(ew,eh)*0.03),opacity:0.3,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap to close</span></div>}
     </div>
   );
