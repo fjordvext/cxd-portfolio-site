@@ -180,15 +180,46 @@ function RenderF1({id,bg,size,sp,onSp,onBodyClick}){
   );
 }
 
-function RenderF2({id,bg,size,titleName}){
+function RenderF2({id,bg,size,isWelcomeExpanded}){
   const t=C.white,p=Math.max(10,size*0.044),fs=r=>Math.max(10,Math.round(size*r));
-  if(id==="intro")return(
-    <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-end",height:"100%",padding:p,color:t}}>
-      <div style={{flex:1,overflow:"hidden",marginBottom:10,borderRadius:2}}><Img src={IMG_HEADSHOT}/></div>
-      <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(22,size*0.09),fontWeight:800,lineHeight:1.05}}>Robert Sosin</h2>
-      <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(12,size*0.038),fontWeight:600,opacity:0.65,marginTop:4,lineHeight:1.3}}>Senior Conversation Designer{"\n"}& AI Experience Strategist</p>
-    </div>
-  );
+  if(id==="intro"){
+    if(isWelcomeExpanded){
+      // Welcome card — clean UX instruction
+      const ep=Math.max(16,size*0.05);
+      const hFs=Math.max(16,size*0.055),bodyFs=Math.max(12,size*0.038);
+      return(
+        <div style={{padding:ep,display:"flex",flexDirection:"column",height:"100%",color:t,gap:Math.max(8,size*0.025)}}>
+          <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:900,lineHeight:1.05}}>How this portfolio works</h2>
+          <div style={{display:"flex",flexDirection:"column",gap:Math.max(6,size*0.018),flex:1}}>
+            {[
+              {n:"01",t:"Navigate between pages",d:"Use the ‹ › arrows to move between the intro, 3 case studies, and contact page."},
+              {n:"02",t:"Tap any frame to expand it",d:"Every colored box is interactive. Tap to reveal more detail, images, and context."},
+              {n:"03",t:"Explore each case study",d:"Case study pages have Situation / Obstacle / Actions / Results tabs at the bottom of the main image."},
+            ].map(item=>(
+              <div key={item.n} style={{display:"flex",gap:Math.max(8,size*0.025),alignItems:"flex-start"}}>
+                <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(9,size*0.028),opacity:0.35,minWidth:Math.max(20,size*0.06),paddingTop:2}}>{item.n}</span>
+                <div>
+                  <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,fontWeight:700,lineHeight:1.2}}>{item.t}</p>
+                  <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(10,size*0.032),fontWeight:400,lineHeight:1.4,opacity:0.65,marginTop:3}}>{item.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{flexShrink:0,borderTop:`1px solid rgba(255,255,255,0.15)`,paddingTop:Math.max(8,size*0.02)}}>
+            <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(9,size*0.028),opacity:0.4,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap anywhere to close</span>
+          </div>
+        </div>
+      );
+    }
+    return(
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-end",height:"100%",padding:p,color:t}}>
+        <div style={{flex:1,overflow:"hidden",marginBottom:10,borderRadius:2}}><Img src={IMG_HEADSHOT}/></div>
+        <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(22,size*0.09),fontWeight:800,lineHeight:1.05}}>Robert Sosin</h2>
+        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(12,size*0.038),fontWeight:600,opacity:0.65,marginTop:4,lineHeight:1.3}}>Senior Conversation Designer{"\n"}& AI Experience Strategist</p>
+        <p style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(8,size*0.026),opacity:0.35,marginTop:6,textTransform:"uppercase",letterSpacing:"0.06em"}}>tap for how to use</p>
+      </div>
+    );
+  }
   if(id==="about")return <Img src={IMG_KFP_NIKE}/>;
   const m={
     sparky:{l:"Case Study 1 / Walmart",title:"SPARKY",h:"Building a voice users can trust for high-consideration purchases",s:"When shopping, savvy customers want to learn about the best available options that best fit their needs. They're very sensitive to anything that resembles a sales gimmick or tactic intended to influence their decision."},
@@ -237,10 +268,15 @@ function RenderF4({id,bg,size,sp,isSmall,isExpanded,sideRect}){
   if(id==="intro"){
     if(!isExpanded)return(
       <div style={{padding:4,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"100%",color:t,textAlign:"center",gap:3}}>
-        <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.075),fontWeight:800,lineHeight:1.1,textTransform:"uppercase"}}>HOW TO USE</span>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.058),opacity:0.55,textTransform:"uppercase",letterSpacing:"0.05em"}}>CLICK HERE</span>
+        <style>{`@keyframes pulse{0%,100%{transform:scale(1);opacity:0.9}50%{transform:scale(1.06);opacity:1}}`}</style>
+        <div style={{animation:"pulse 2s ease-in-out infinite"}}>
+          <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.068),fontWeight:800,lineHeight:1.1,textTransform:"uppercase",display:"block"}}>THIS PORTFOLIO</span>
+          <span style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:fs(0.068),fontWeight:800,lineHeight:1.1,textTransform:"uppercase",display:"block"}}>IS TAPPABLE</span>
+          <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:fs(0.052),opacity:0.55,textTransform:"uppercase",letterSpacing:"0.05em",display:"block",marginTop:3}}>TAP HERE</span>
+        </div>
       </div>
     );
+    // isExpanded — could be proactive (user tapped) or reactive (blocked nav)
     return <div style={{width:"100%",height:"100%",overflow:"hidden"}}><Img src={IMG_HOW_TO_USE}/></div>;
   }
   if(!SD[id])return null;
@@ -351,6 +387,25 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
 }
 
 /* ── Transition ──────────────────────────────────────────────────── */
+// Reactive instructions card — shown when user tries to navigate away from page 1
+function ReactiveInstructions({layout,onContinue}){
+  const{w,h,f}=layout;
+  const bg=C.purple,t=C.white;
+  const p=Math.max(20,Math.min(w,h)*0.06);
+  const hFs=Math.max(18,Math.min(w,h)*0.06);
+  const bodyFs=Math.max(13,Math.min(w,h)*0.04);
+  return(
+    <div style={{position:"absolute",inset:0,zIndex:100,background:"rgba(0,0,0,0.7)",display:"flex",alignItems:"center",justifyContent:"center"}}>
+      <div style={{background:bg,borderRadius:8,padding:p,maxWidth:Math.min(w*0.85,480),color:t,boxShadow:"0 12px 60px rgba(0,0,0,0.6)",display:"flex",flexDirection:"column",gap:Math.max(12,h*0.025)}}>
+        <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:900,lineHeight:1.05}}>Before you go —</h2>
+        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.5,opacity:0.85,fontWeight:500}}>Every frame in this portfolio is tappable. Tap any box to reveal more detail, images, and context about my work.</p>
+        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.5,opacity:0.85,fontWeight:500}}>Case study pages have <strong>Situation / Obstacle / Actions / Results</strong> tabs at the bottom of the main image.</p>
+        <button onClick={onContinue} style={{background:C.yellow,color:C.black,border:"none",borderRadius:5,padding:`${Math.max(10,h*0.02)}px ${Math.max(16,w*0.04)}px`,fontFamily:"'Nunito Sans',sans-serif",fontSize:Math.max(13,Math.min(w,h)*0.038),fontWeight:800,cursor:"pointer",textTransform:"uppercase",letterSpacing:"0.05em",marginTop:4,alignSelf:"flex-start"}}>Got it — take me to page 2</button>
+      </div>
+    </div>
+  );
+}
+
 const TR="left 0.38s cubic-bezier(0.4,0,0.2,1),top 0.38s cubic-bezier(0.4,0,0.2,1),width 0.38s cubic-bezier(0.4,0,0.2,1),height 0.38s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease";
 
 /* ── Expand state machine ────────────────────────────────────────── */
@@ -360,17 +415,22 @@ const TR="left 0.38s cubic-bezier(0.4,0,0.2,1),top 0.38s cubic-bezier(0.4,0,0.2,
 //       "f3f6"(f3→f1 + f6→f2), "f2f6"(f2→f1 + f6→f2), "f2f5"(f2→f1 + f5→f2)
 //       "f3_only"(f3→f1), "f2_f1swap"(f2↔f1 swap for case study pages)
 
-function GoldenSlide({id,layout,colors,sp,onSp,mode}){
+function GoldenSlide({id,layout,colors,sp,onSp,mode,onInstructionsSeen}){
   const f=layout.f,sideRect=layout.sideRect;
   const cs=!!SD[id];
   const[expKey,setExpKey]=useState(null);
   function close(){setExpKey(null);}
+  function expand(key){
+    setExpKey(key);
+    if(id==="intro"&&(key==="f4_to_f1"||key==="f2_welcome")&&onInstructionsSeen) onInstructionsSeen();
+  }
 
   function getRect(fi){
     const b=f[fi];
     if(!expKey)return b;
     switch(expKey){
       case "f4_to_f1": if(fi===3)return f[0]; return b;
+      case "f2_welcome": if(fi===1)return f[0]; return b;
       case "f4_to_f2": if(fi===3)return{x:sideRect.x,y:sideRect.y,s:f[3].s}; return b;
       case "f5_to_f2": if(fi===4)return{x:sideRect.x,y:sideRect.y,s:f[4].s}; return b;
       case "f3f6": if(fi===2)return f[0]; if(fi===5)return{x:sideRect.x,y:sideRect.y,s:f[5].s}; return b;
@@ -394,6 +454,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
       case "f2f5":  if(fi===4)return{w:sideRect.w,h:sideRect.h}; break;
       case "f4_rect": if(fi===3)return{w:sideRect.w,h:sideRect.h}; break;
       case "f4_to_f1": if(fi===3)return{w:f[0].s,h:f[0].s}; break;
+      case "f2_welcome": if(fi===1)return{w:f[0].s,h:f[0].s}; break;
     }
     const r=getRect(fi);return{w:r.s,h:r.s};
   }
@@ -402,13 +463,14 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
     if(!expKey)return true;
     switch(expKey){
       case "f4_to_f1": return fi===3;
+      case "f2_welcome": return fi===1;
       case "f4_to_f2": return fi===0||fi===3;
       case "f5_to_f2": return fi===0||fi===4;
       case "f3f6": return fi===2||fi===5;
       case "f2f6": return fi===1||fi===5;
       case "f2f5": return fi===1||fi===4;
       case "f3f1swap": return fi===0||fi===1||fi===2;
-      case "f2f1_swap": return fi===0||fi===1||fi===2; // F3 stays visible
+      case "f2f1_swap": return fi===0||fi===1||fi===2;
       case "f4_rect": return fi===0||fi===3;
       default: return false;
     }
@@ -419,6 +481,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
     if(!visible(fi))return 1;
     switch(expKey){
       case "f4_to_f1": return fi===3?15:10-fi;
+      case "f2_welcome": return fi===1?15:10-fi;
       case "f4_to_f2": return fi===3?15:fi===0?12:10-fi;
       case "f5_to_f2": return fi===4?15:fi===0?12:10-fi;
       case "f3f6": return fi===2?15:fi===5?14:10-fi;
@@ -435,6 +498,7 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
     if(!expKey)return false;
     switch(expKey){
       case "f4_to_f1": return fi===3;
+      case "f2_welcome": return fi===1;
       case "f4_to_f2": return fi===3;
       case "f5_to_f2": return fi===4;
       case "f3f6": return fi===2;
@@ -450,7 +514,11 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
   function handleClick(fi,e){
     e.stopPropagation();
     if(expKey){close();return;}
-    if(id==="intro"){if(fi===3)setExpKey("f4_to_f1");return;}
+    if(id==="intro"){
+      if(fi===3)expand("f4_to_f1");
+      if(fi===1||fi===0||fi===2||fi===4||fi===5)expand("f2_welcome");
+      return;
+    }
     if(id==="about"){
       if(fi===0)setExpKey("f4_to_f2");
       if(fi===1)setExpKey("f2f6");
@@ -479,7 +547,8 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
     :(f6Exp?(mode==="landscape"?"right":"up"):(mode==="landscape"?"left":"down"));
   const f4AboutArrow=mode==="landscape"?"right":"up";
   const f4AboutExp=expKey==="f4_to_f2"&&id==="about";
-  const f4CsExp=(expKey==="f4_rect"||expKey==="f4_to_f1")&&id!=="about";
+  const f4IntroExp=expKey==="f4_to_f1"&&id==="intro";
+  const f4CsExp=(expKey==="f4_rect"||expKey==="f4_to_f1")&&id!=="about"&&id!=="intro";
 
   return(
     <div style={{width:layout.w,height:layout.h,position:"relative",overflow:"hidden",background:C.black}}
@@ -492,15 +561,15 @@ function GoldenSlide({id,layout,colors,sp,onSp,mode}){
         const dims=getDims(fi);
         const isVis=visible(fi);
         const isExp=!!expKey&&isVis&&fi!==0;
-        const f2expanded=expKey==="f2f1_swap"&&fi===1;
+        const welcomeExp=expKey==="f2_welcome"&&fi===1;
 
         let content=null;
         if(fi===0)content=<RenderF1 id={id} bg={colors[0]} size={f[0].s} sp={sp} onSp={onSp} onBodyClick={e=>handleClick(0,e)}/>;
-        else if(fi===1)content=<RenderF2 id={id} bg={colors[1]} size={dims.w} navPad={f2expanded}/>;
+        else if(fi===1)content=<RenderF2 id={id} bg={colors[1]} size={dims.w} navPad={expKey==="f2f1_swap"&&fi===1} isWelcomeExpanded={welcomeExp}/>;
         else if(fi===2)content=<RenderF3 id={id} bg={colors[2]} size={dims.w} sp={sp}/>;
         else if(fi===3){
           if(id==="about")content=<RenderF4_About bg={colors[3]} size={dims.w} arrowDir={f4AboutArrow} isExpanded={f4AboutExp}/>;
-          else content=<RenderF4 id={id} bg={colors[3]} size={f[3].s} sp={sp} isSmall={f[3].s<=130} isExpanded={f4CsExp} sideRect={sideRect}/>;
+          else content=<RenderF4 id={id} bg={colors[3]} size={f[3].s} sp={sp} isSmall={f[3].s<=130} isExpanded={f4CsExp||f4IntroExp} sideRect={sideRect}/>;
         }
         else if(fi===4)content=<RenderF5 id={id} bg={colors[4]} size={f[4].s} sp={sp} arrowDir={f5Arrow2} isExpanded={f5Exp} sideRect={sideRect}/>;
         else if(fi===5)content=<RenderF6 id={id} bg={colors[5]} size={f[5].s} sp={sp} arrowDir={f6Arrow} isExpanded={f6Exp} sideRect={sideRect}/>;
@@ -528,22 +597,47 @@ export default function Portfolio(){
   const[vh,setVh]=useState(window.innerHeight);
   const[soar,setSoar]=useState({});
   const[idx,setIdx]=useState(0);
+  const[hasSeenInstructions,setHasSeenInstructions]=useState(false);
+  const[showReactive,setShowReactive]=useState(false);
+
   useEffect(()=>{
     const u=()=>{setVw(window.innerWidth);setVh(window.innerHeight);};
     window.addEventListener("resize",u);
     return()=>window.removeEventListener("resize",u);
   },[]);
+
   const layout=computeLayout(vw,vh);
   const mode=layout.isLandscape?"landscape":"portrait";
   const id=IDS[idx];
+
+  function handleNext(){
+    if(idx===0&&!hasSeenInstructions){
+      setShowReactive(true);
+      return;
+    }
+    if(idx<IDS.length-1){setIdx(i=>i+1);setSoar({});}
+  }
+  function handlePrev(){
+    if(idx>0){setIdx(i=>i-1);setSoar({});}
+  }
+  function handleReactiveContinue(){
+    setHasSeenInstructions(true);
+    setShowReactive(false);
+    setIdx(1);
+    setSoar({});
+  }
+
   return(
     <div style={{width:"100vw",height:"100vh",display:"flex",alignItems:"center",justifyContent:"center",background:"#111",overflow:"hidden",position:"relative"}}>
       <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
       <style>{`*{box-sizing:border-box;margin:0;padding:0}html,body{overflow:hidden;width:100%;height:100%;}::selection{background:${C.purple};color:#fff}button{font-family:inherit}a:hover{opacity:0.7!important}`}</style>
       <div style={{width:layout.w,height:layout.h,position:"relative"}}>
-        <GoldenSlide id={id} layout={layout} colors={SCH[id]} sp={soar[id]} onSp={p=>setSoar(v=>({...v,[id]:p}))} mode={mode}/>
-        {idx>0&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i-1);setSoar({});}} style={{position:"absolute",left:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&lsaquo;</button>}
-        {idx<IDS.length-1&&<button onClick={e=>{e.stopPropagation();setIdx(i=>i+1);setSoar({});}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&rsaquo;</button>}
+        <GoldenSlide id={id} layout={layout} colors={SCH[id]} sp={soar[id]}
+          onSp={p=>setSoar(v=>({...v,[id]:p}))} mode={mode}
+          onInstructionsSeen={()=>setHasSeenInstructions(true)}/>
+        {showReactive&&<ReactiveInstructions layout={layout} onContinue={handleReactiveContinue}/>}
+        {idx>0&&<button onClick={e=>{e.stopPropagation();handlePrev();}} style={{position:"absolute",left:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&lsaquo;</button>}
+        {idx<IDS.length-1&&<button onClick={e=>{e.stopPropagation();handleNext();}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",zIndex:50,width:40,height:66,border:"2px solid rgba(255,255,255,0.3)",borderRadius:5,background:"rgba(0,0,0,0.6)",color:"#fff",cursor:"pointer",fontSize:24,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>&rsaquo;</button>}
       </div>
     </div>
   );
