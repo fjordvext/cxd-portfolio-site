@@ -390,7 +390,7 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
       <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
       <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?17:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{ex?"Comedy Central":"Comedy Central\nBrand Creative"}</span>
-      {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>I learned brand voices as a creative director behind the marketing of shows like South Park and Futurama.</p>}
+      {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:17,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>I learned brand voices as a creative director behind the marketing of shows like South Park and Futurama, winning 12 ProMax/BDA awards and making a viral handmade Futurama promo series creator Matt Groening liked so much he made it the open for an actual episode.</p>}
     </div>
   );
 }
@@ -409,14 +409,17 @@ function TabHintInstructions({layout,mode,onContinue,nextTabLabel,pageId}){
   return(
     <div style={{position:"absolute",inset:0,zIndex:100,background:"rgba(0,0,0,0.7)",display:"flex",alignItems:"center",justifyContent:"center",padding:12}}>
       <div style={{background:bg,borderRadius:8,padding:p,width:Math.min(w*0.88,460),maxHeight:h*0.88,color:t,boxShadow:"0 12px 60px rgba(0,0,0,0.6)",display:"flex",flexDirection:"column",gap:Math.max(8,h*0.016),overflow:"hidden"}}>
-        <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:900,lineHeight:1.05,flexShrink:0}}>Before you go</h2>
-        <div style={{width:40,height:3,background:C.yellow,borderRadius:2,flexShrink:0}}/>
-        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.4,opacity:0.85,fontWeight:500,flexShrink:0}}>Use the tab bar at the bottom of the main image to go through the full story of this case study.</p>
-        {nextTabLabel&&<p style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(11,Math.min(w,h)*0.032),letterSpacing:"0.08em",textTransform:"uppercase",opacity:0.7,flexShrink:0}}>Next up: <strong>{nextTabLabel}</strong></p>}
-        <div style={{flexShrink:0,overflow:"hidden",borderRadius:6,border:"2px solid rgba(255,255,255,0.2)"}}>
-          <img src={imgSrc} alt="Tab bar diagram" style={{width:"100%",display:"block",objectFit:"cover"}}/>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexShrink:0}}>
+          <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:900,lineHeight:1.05}}>Before you go</h2>
+          <button onClick={()=>onContinue("close")} style={{background:"transparent",border:"none",color:"rgba(255,255,255,0.6)",fontSize:20,cursor:"pointer",padding:"0 0 0 12px",lineHeight:1,fontWeight:700,flexShrink:0}}>{"✕"}</button>
         </div>
-        <button onClick={onContinue} style={{background:C.yellow,color:C.black,border:"none",borderRadius:5,padding:`${Math.max(8,h*0.015)}px ${Math.max(12,w*0.03)}px`,fontFamily:"'Nunito Sans',sans-serif",fontSize:btnFs,fontWeight:800,cursor:"pointer",textTransform:"uppercase",letterSpacing:"0.05em",alignSelf:"flex-start",flexShrink:0}}>{nextTabLabel?`Take me to ${nextTabLabel}`:'Got it — next page'}</button>
+        <div style={{width:40,height:3,background:C.yellow,borderRadius:2,flexShrink:0}}/>
+        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.35,opacity:0.85,fontWeight:500,flexShrink:0}}>Tap each tab at the bottom of the main image to go through the full story.</p>
+        <div style={{flexShrink:0,overflow:"hidden",borderRadius:5,border:"2px solid rgba(255,255,255,0.2)",maxHeight:Math.min(h*0.28,160)}}>
+          <img src={imgSrc} alt="Tab bar diagram" style={{width:"100%",display:"block",objectFit:"cover",objectPosition:"center"}}/>
+        </div>
+        {nextTabLabel&&<p style={{fontFamily:"'JetBrains Mono',monospace",fontSize:Math.max(10,Math.min(w,h)*0.03),letterSpacing:"0.08em",textTransform:"uppercase",opacity:0.7,flexShrink:0}}>Next up: <strong style={{color:C.yellow}}>{nextTabLabel}</strong></p>}
+        <button onClick={()=>onContinue("next")} style={{background:C.yellow,color:C.black,border:"none",borderRadius:5,padding:`${Math.max(8,h*0.014)}px ${Math.max(12,w*0.03)}px`,fontFamily:"'Nunito Sans',sans-serif",fontSize:btnFs,fontWeight:800,cursor:"pointer",textTransform:"uppercase",letterSpacing:"0.05em",alignSelf:"flex-start",flexShrink:0}}>{nextTabLabel?`Take me to ${nextTabLabel}`:"Got it — next page"}</button>
       </div>
     </div>
   );
@@ -436,7 +439,7 @@ function ReactiveInstructions({layout,onContinue}){
         <h2 style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:hFs,fontWeight:900,lineHeight:1.05,flexShrink:0}}>Before you go</h2>
         <div style={{width:40,height:3,background:C.yellow,borderRadius:2,flexShrink:0}}/>
         <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.45,opacity:0.85,fontWeight:500}}>Every frame in this portfolio is tappable. Tap any box to reveal more detail, images, and context about my work.</p>
-        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.45,opacity:0.85,fontWeight:500}}>Case study pages have <strong>Situation / Obstacle / Actions / Results</strong> tabs at the bottom of the main image.</p>
+        <p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:bodyFs,lineHeight:1.45,opacity:0.85,fontWeight:500}}>Case study pages have <strong>Situation / Obstacle / Actions / Results</strong> tabs at the bottom of the main image. You'll need to tap each tab before moving on to the next page.</p>
         <button onClick={onContinue} style={{background:C.yellow,color:C.black,border:"none",borderRadius:5,padding:`${Math.max(9,h*0.018)}px ${Math.max(14,w*0.035)}px`,fontFamily:"'Nunito Sans',sans-serif",fontSize:btnFs,fontWeight:800,cursor:"pointer",textTransform:"uppercase",letterSpacing:"0.05em",marginTop:4,alignSelf:"flex-start",flexShrink:0}}>Got it — take me to page 2</button>
       </div>
     </div>
@@ -676,17 +679,16 @@ export default function Portfolio(){
     setSoar({});
   }
   const TAB_ORDER=["s","o","a","r"];
-  function handleTabHintContinue(){
+  function handleTabHintContinue(action){
     setShowTabHint(false);
-    // Advance to next tab, not next page
+    if(action==="close") return; // X button — just dismiss, stay on current tab
+    // "next" button — advance to next tab
     const currentTab=soar[IDS[idx]]||"s";
     const currentTabIdx=TAB_ORDER.indexOf(currentTab);
     const nextTab=TAB_ORDER[currentTabIdx+1];
     if(nextTab){
-      // Go to next tab — do NOT set hasUsedTabs, so intercept repeats if they skip again
       setSoar(v=>({...v,[IDS[idx]]:nextTab}));
     } else {
-      // Already on last tab, now let them navigate
       if(idx<IDS.length-1){setIdx(i=>i+1);setSoar({});setHasUsedTabs(false);}
     }
   }
