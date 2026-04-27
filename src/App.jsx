@@ -389,7 +389,7 @@ function RenderF4_About({bg,size,arrowDir,isExpanded}){
   const isH=arrowDir==="right"||arrowDir==="left";
   return(
     <div style={{padding:p,display:"flex",flexDirection:"column",justifyContent:ex?"flex-start":"center",alignItems:ex?"flex-start":"center",height:"100%",color:t,overflow:"hidden",gap:ex?12:3}}>
-      <Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>
+      {!ex&&<Arrow dir={arrowDir} color={t} w={isH?aw:ah} h={isH?ah:aw}/>}
       <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:ex?13:Math.max(5,size*0.12),lineHeight:1.3,opacity:0.8,textTransform:"uppercase",letterSpacing:"0.06em",whiteSpace:"pre-line"}}>{ex?"Comedy Central":"Comedy Central\nBrand Creative"}</span>
       {ex&&<p style={{fontFamily:"'Nunito Sans',sans-serif",fontSize:14,lineHeight:1.4,opacity:0.85,fontWeight:500,marginTop:4}}>I learned brand voices as a creative director behind the marketing of shows like South Park and Futurama, winning 12 ProMax/BDA awards and making a viral handmade Futurama promo series creator Matt Groening liked so much he made it the open for an actual episode.</p>}
     </div>
